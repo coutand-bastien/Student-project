@@ -1,0 +1,153 @@
+class Population { 
+  private ArrayList<PVector> agentPos_list;
+  private ArrayList<Float> agentSize_list;
+
+  public Population() {
+    this.agentPos_list = new ArrayList<PVector>();
+    this.agentSize_list = new ArrayList<Float>();
+
+    this.intAgents(mouvement_emergence.MAXAGENT);
+  }
+
+  public void debug() {
+    textSize(10);   
+
+    for (int i = 0; i < this.agentPos_list.size(); i++) {
+      fill(0);
+      text(i, this.getAgentPos(i).x + 10, this.getAgentPos(i).y);
+
+      fill(245, 45, 234);
+      text(this.nearestIndex(this.getAgentPos(i), i), this.getAgentPos(i).x + 10, this.getAgentPos(i).y + 10);
+
+      fill(0);
+      stroke(5);
+      line(this.getAgentPos(i).x, this.getAgentPos(i).y, this.getAgentPos(this.nearestIndex(this.getAgentPos(i), i)).x, this.getAgentPos(this.nearestIndex(this.getAgentPos(i), i)).y);
+      noStroke();
+    }
+  }
+
+  public void add(PVector agentPos, float size) {
+    this.agentPos_list.add(agentPos);
+    this.agentSize_list.add(size);
+    //println("ajout d'un l'élément, il sera initialisé à la taille de ", size, " pixels");
+  }
+
+  public PVector getAgentPos(int index) {
+    return this.agentPos_list.get(index);
+  }
+
+  public Float getAgentSize(int index) {
+    return this.agentSize_list.get(index);
+  }
+
+  public void updatePos(int index, PVector newPos) {
+    this.getAgentPos(index).add(newPos);
+  }
+
+  public void updateSize(int index, float newSize) {
+    this.agentSize_list.set(index, this.agentSize_list.get(index) + newSize);
+  }
+
+  public void remove(int index) {
+    this.agentPos_list.remove(index);
+    this.agentSize_list.remove(index);  // ... et on supprime la taille l'agent
+    // println("suppression de l'élément : ", index);
+  }
+
+  private void intAgents(int nbAgent) {
+    for (int i = 0; i < nbAgent; i++) {
+      this.add(new PVector(random(0, width), random(0, height)), 10.F);
+    }
+  }
+
+  public void drawAgent() {
+    fill(0, 255, 0);
+    for (int i = 0; i < this.agentPos_list.size(); i++) {
+      circle(this.getAgentPos(i).x, this.getAgentPos(i).y, this.getAgentSize(i));
+    }
+  }
+
+  private float distance(PVector agent1, PVector agent2) {
+    return sqrt(pow(agent2.x - agent1.x, 2) + pow(agent2.y - agent1.y, 2));
+  }
+
+  private int nearestIndex(PVector agent, int index) {  
+    int nearestIndex = 0;
+    float minDistance = width * height; // valeur plus grande que la plus grande diagonal de l'écran
+
+    for (int i = 0; i < this.agentPos_list.size(); i++) {
+
+      // on ne calcule pas la distance entre les deux même point
+      if (!agent.equals(this.getAgentPos(i))) {
+        if (this.getAgentSize(index).equals(this.getAgentSize(i))) {
+          //println("this.getAgentSize(index) :", this.getAgentSize(index));
+          
+          if (distance(agent, this.getAgentPos(i)) < minDistance) {
+             println("distance(agent, this.getAgentPos(i)):", distance(agent, this.getAgentPos(i)));
+
+            nearestIndex = i;
+            minDistance = distance(agent, this.getAgentPos(i));
+          }
+        }
+      }
+    }
+
+    return nearestIndex;
+  }
+
+  /* REVOIR UPDATE AGENT POUR LA DIRECTION */
+  private void updateAgent(int index) {
+    PVector agent = this.getAgentPos(index);
+    PVector nearestAgent = this.getAgentPos(this.nearestIndex(agent, index));     
+    PVector speed = new PVector(0, 0);
+
+    if (this.distance(nearestAgent, agent) > mouvement_emergence.LIMITFAGOCYTOSE) {
+      if (nearestAgent.x >= agent.x) speed.x =  1;
+      if (nearestAgent.x <  agent.x) speed.x = -1;
+      if (nearestAgent.y >= agent.y) speed.y =  1;
+      if (nearestAgent.y <  agent.y) speed.y = -1;
+    }
+
+    agent.add(speed);
+  }
+
+  public void updateAllAgents() {
+    if (this.agentPos_list.size() > 1) {
+      for (int i = 0; i < this.agentPos_list.size(); i++) {
+        this.updateAgent(i);
+      }
+
+      phagocytose();
+    }
+    
+  //  println(this.agentSize_list.get(0));
+  }
+
+  public void phagocytose() {
+    PVector agent, nearestAgent;
+    float newSize;
+    int neartInd;
+
+    for (int i = 0; i < this.agentPos_list.size(); i++) {
+
+      agent = this.getAgentPos(i);
+      neartInd = this.nearestIndex(agent, i);
+
+      if (this.getAgentSize(neartInd).equals(this.getAgentSize(i))) {
+
+        nearestAgent = this.getAgentPos(neartInd);
+        newSize = sqrt(PI * pow(this.getAgentSize(i)/2, 2) + PI * pow(this.getAgentSize(neartInd)/2, 2) / PI)*1.5; // air : PI*R²; rayon : racine(air/PI) et on ne fait pas x 2 pour obtenir le diamètre car sinon elle grossit trop vite;
+
+        if (i > this.nearestIndex(agent, i)) {
+          this.remove(i);
+          this.remove(neartInd);
+        } else {
+          this.remove(neartInd);
+          this.remove(i);
+        }  
+
+        this.add(new PVector(agent.x, agent.y), newSize);
+      }
+    }
+  }
+}

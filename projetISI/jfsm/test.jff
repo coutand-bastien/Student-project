@@ -1,0 +1,79 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?><!--Created with JFSM.--><structure>
+	<type>fa</type>
+	<automaton>
+		<state id='109' name='0'>
+			<x>0</x>
+			<y>0</y>
+			<final/>
+		</state>
+		<state id='110' name='1'>
+			<x>0</x>
+			<y>0</y>
+		</state>
+		<state id='111' name='2'>
+			<x>0</x>
+			<y>0</y>
+			<initial/>
+		</state>
+		<state id='112' name='3'>
+			<x>0</x>
+			<y>0</y>
+			<initial/>
+		</state>
+		<state id='113' name='4'>
+			<x>0</x>
+			<y>0</y>
+			<initial/>
+		</state>
+		<transition>
+			<from>109</from>
+			<to>110</to>
+			<read>c</read>
+		</transition>
+		<transition>
+			<from>112</from>
+			<to>113</to>
+			<read>a</read>
+		</transition>
+		<transition>
+			<from>109</from>
+			<to>109</to>
+			<read>a</read>
+		</transition>
+		<transition>
+			<from>111</from>
+			<to>111</to>
+			<read>a</read>
+		</transition>
+		<transition>
+			<from>110</from>
+			<to>109</to>
+			<read>b</read>
+		</transition>
+		<transition>
+			<from>111</from>
+			<to>112</to>
+			<read>c</read>
+		</transition>
+		<transition>
+			<from>112</from>
+			<to>110</to>
+			<read>a</read>
+		</transition>
+		<transition>
+			<from>113</from>
+			<to>109</to>
+			<read>b</read>
+		</transition>
+		<transition>
+			<from>111</from>
+			<to>110</to>
+			<read>c</read>
+		</transition>
+		<transition>
+			<from>110</from>
+			<to>113</to>
+			<read>c</read>
+		</transition>
+	</automaton>
+</structure>
