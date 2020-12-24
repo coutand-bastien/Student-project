@@ -1,4 +1,0 @@
-To compile and execute, you need:
-
-     1 - go to the project folder and write the "make" command on a terminal.
-     2 - then then write "./build/run.out"
