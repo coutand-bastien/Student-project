@@ -50,4 +50,4 @@
 
 # Projets ENSIBS - 3 année :
 ## Algorithmes et programmation impérative
--   algorithme génétique - UMM ( Python3 / Bash )
+-   Algorithme génétique - Ultra Master Mind ( Python3 / Bash )
