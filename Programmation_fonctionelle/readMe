@@ -1,0 +1,8 @@
+-- Install
+    install ocambuild
+
+-- Build
+    ocamlbuild -lib graphics file.byte
+
+-- Exec
+    ./file.byte
