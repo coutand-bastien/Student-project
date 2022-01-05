@@ -46,3 +46,8 @@
 ## Langage et automate
 -   Lea ( Flex / Yacc / C++ )
 
+<br/><br/>
+
+# Projets ENSIBS - 3 année :
+## Algorithmes et programmation impérative
+-   algorithme génétique (UMM)
