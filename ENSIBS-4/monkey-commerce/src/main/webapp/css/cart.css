@@ -1,0 +1,108 @@
+/* Recapitulatif de la commande */
+#recap-list {
+    margin: 50px auto;
+    max-width: 800px;
+    padding: 20px;
+    border: 1px solid #ccc;
+}
+
+#recap-list h1 {
+    margin-bottom: 20px;
+}
+
+#recap-list table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+}
+
+#recap-list th {
+    text-align: left;
+    padding: 10px;
+    background-color: #f2f2f2;
+    border-bottom: 1px solid #ddd;
+}
+
+#recap-list td {
+    padding: 10px;
+    border-bottom: 1px solid #ddd;
+}
+
+#recap-list-form input[type="number"] {
+    width: 50px;
+    text-align: center;
+}
+
+.btn {
+    background-color: #fd9a6c;
+    border-radius: 8px;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    cursor: pointer;
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.btn:hover {
+    box-shadow: #333333;
+}
+
+#recap-list-form .error {
+    color: red;
+    margin-bottom: 20px;
+}
+
+#purchase-link {
+    text-align: center;
+    margin-bottom: 50px;
+}
+
+.remove-btn {
+    background-color: #fd9a6c; /* couleur de fond */
+    border: none; /* bordure */
+    color: white; /* couleur du texte */
+    padding: 12px 24px; /* espacement autour du texte */
+    text-align: center; /* alignement du texte */
+    text-decoration: none; /* décoration du texte */
+    display: inline-block; /* affichage en ligne */
+    font-size: 16px; /* taille de la police */
+    margin: 4px 2px; /* marge autour du bouton */
+    cursor: pointer; /* curseur de souris */
+    border-radius: 8px; /* arrondi des coins */
+}
+
+.remove-btn:hover {
+    box-shadow: #333333;
+}
+
+/* Bouton Clear */
+.btn-clear {
+    background-color: #1eaedb;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 10px 5px;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+/* Bouton Continuer */
+.continue {
+    background-color: #1eaedb;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 10px 5px;
+    cursor: pointer;
+    border-radius: 5px;
+    width: 100%;
+}

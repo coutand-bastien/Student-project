@@ -1,0 +1,114 @@
+/* Définition du style global de la page */
+
+body {
+    font-family: Arial, sans-serif;
+    margin: 20px;
+}
+
+/* Style de la section de la date */
+
+#date {
+    float: right;
+    text-align: right;
+}
+
+/* Style de la section des informations client */
+
+#customer {
+    float: left;
+}
+
+.customer-info {
+    display: block;
+    margin-bottom: 5px;
+}
+
+/* Style du tableau de récapitulatif de commande */
+
+#order-details {
+    margin: 0 auto;
+    width: 80%;
+    border-collapse: collapse;
+}
+
+#order-details th, #order-details td {
+    border: 1px solid #ccc;
+    padding: 10px;
+    text-align: center;
+}
+
+#order-details th {
+    background-color: #eee;
+}
+
+#order-details tfoot td {
+    font-weight: bold;
+}
+
+#order-details tfoot td:first-child {
+    text-align: right;
+}
+
+#order-details tbody td:nth-child(3),
+#order-details tbody td:nth-child(5),
+#order-details tfoot td:last-child {
+    text-align: right;
+}
+
+#order-details tbody td:nth-child(1),
+#order-details tbody td:nth-child(2) {
+    text-align: left;
+}
+
+
+h3 {
+    font-size: 22px;
+    font-weight: bold;
+    margin: 20px 0;
+}
+
+table {
+    border-collapse: collapse;
+    width: 100%;
+    margin: 0 auto;
+}
+
+th, td {
+    border: 1px solid #ccc;
+    padding: 10px;
+    text-align: left;
+}
+
+th {
+    background-color: #f2f2f2;
+}
+
+tfoot td {
+    font-weight: bold;
+}
+
+.customer-info {
+    display: block;
+    margin-bottom: 10px;
+}
+
+#date {
+    float: right;
+}
+
+#customer {
+    float: left;
+    width: 40%;
+    margin-right: 20px;
+}
+
+/* Media queries for responsive design */
+@media only screen and (max-width: 768px) {
+    #customer {
+        width: 100%;
+        float: none;
+        margin-right: 0;
+        margin-bottom: 20px;
+    }
+}
+

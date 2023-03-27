@@ -1,0 +1,28 @@
+<div id="sidebar">
+    <div class="sidebar__title">
+        <div class="sidebar__img">
+            <h1>Pannel</h1>
+        </div>
+
+        <i onclick="closeSidebar()" class="fa fa-times" id="sidebarIcon" aria-hidden="true"></i>
+    </div>
+
+    <div class="sidebar__menu">
+        <div class="sidebar__link">
+            <i class="fa fa-home"></i>
+        </div>
+
+        <h2>Reader</h2>
+        <div class="sidebar__link">
+            <i class="fa fa-money"></i>
+            <a href="/main">Planning</a>
+        </div>
+
+        <div class="sidebar__logout">
+            <i class="fa fa-power-off"></i>
+            <a href="/authentification/logout">Logout</a>
+        </div>
+    </div>
+</div>
+
+<script src=" {{ url_for('static', path='js/script.js') }} "></script>

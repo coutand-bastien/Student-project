@@ -1,0 +1,74 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:c="http://java.sun.com/jsp/jstl/core"
+      xmlns:f="http://java.sun.com/jsf/core">
+
+    <h:head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        <title>Order - E-Commerce</title>
+        <link rel="stylesheet" type="text/css" href="css/order.css"/>
+    </h:head>
+
+    <h:body>
+        <h3>Customer Information</h3>
+
+        <div id="date">
+            <h:outputText value="#{cartBean.cart.customerOrder.dateCreated}"/>
+        </div>
+
+        <div id="customer">
+            <span class="customer-info">
+                name: <h:outputText value="#{cartBean.cart.customer.name}"/>
+            </span>
+            <span class="customer-info">
+                email: <h:outputText value="#{cartBean.cart.customer.email}"/>
+            </span>
+            <span class="customer-info">
+                phone: <h:outputText value="#{cartBean.cart.customer.phone}"/>
+            </span>
+            <span class="customer-info">
+                address: <h:outputText value="#{cartBean.cart.customer.address}"/>
+            </span>
+            <span class="customer-info">
+                city: <h:outputText value="#{cartBean.cart.customer.cityRegion}"/>
+            </span>
+        </div>
+
+        <h3>Order Details</h3>
+        <table id="order-details">
+            <thead>
+            <tr>
+                <th>Ref.</th>
+                <th>Name</th>
+                <th>Price</th>
+                <th>Quantity</th>
+                <th>Subtotal</th>
+            </tr>
+            </thead>
+            <tbody>
+                <c:forEach items="#{cartBean.cart.items}" var="item">
+                    <tr>
+                        <td><h:outputText value="#{item.product.id}"/></td>
+                        <td><h:outputText value="#{item.product.name}"/></td>
+                        <td><h:outputText value="#{item.product.price}"/></td>
+                        <td><h:outputText value="#{item.quantity}"/></td>
+                        <td><h:outputText value="#{item.quantity * item.product.price}"/></td>
+                    </tr>
+                </c:forEach>
+
+                <!-- Clear cart subview after the table execution -->
+                <f:subview id="clearCartSubView">
+                    <f:event listener="#{cartBean.clearCart}" type="preRenderComponent"/>
+                </f:subview>
+            </tbody>
+            <tfoot>
+                <tr>
+                    <td colspan="4">Total</td>
+                    <td><h:outputText value="#{cartBean.cart.customerOrder.amount}" /></td>
+                </tr>
+            </tfoot>
+        </table>
+    </h:body>
+</html>

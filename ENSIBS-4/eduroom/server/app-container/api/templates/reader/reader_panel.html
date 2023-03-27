@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous" />
+    <link rel="stylesheet" href=" {{ url_for('static', path='css/reader_panel.css') }} " />
+    <script type="text/javascript" src="https://unpkg.com/xlsx@0.15.1/dist/xlsx.full.min.js"></script>
+    <link rel="stylesheet" href="{{ url_for('static', path='css/menu.css') }} "/>
+    <title>Pannel du visiteur</title>
+  </head>
+
+  <body id="body">
+    <div class="container">
+
+      {% include 'header.html' %}
+
+      <main>
+        <div class="main__container">
+          <div class="Interface_reader">
+          <div class="right">
+            <form>
+                <h3>Salles</h3>
+                <!-- Create a dropdown menu "Salles" with rooms listed in allrooms.txt -->
+                <div class="dropdown">
+                    <select name="Salles" id="Salles">
+                        <!-- Rooms listed in list_rooms.txt -->
+                        <script>
+
+                          const options = {
+                            method: 'GET',
+            
+                            headers: {
+                              'Content-Type': 'application/text', 
+                            },
+                          }
+
+                          fetch("http://127.0.0.1:8000/reader_panel/liste_salle", options)
+                          .then(res => res.blob())
+                          .then(res => res.text())
+                          .then(res => res.split("\n"))
+                          .then(res => {
+                            console.log(res);
+                            var i;
+                            for (i = 1; i < res.length-1; i++) {
+                              document.getElementById("Salles").innerHTML += "<option value=" + res[i] + ">" + res[i] + "</option>";
+                            }
+                          });
+                        </script>
+                    </select>
+                </div>
+    
+                <script>
+                    // Create a function to check if the checkbox is checked or not
+                    function check() {
+                        var json = {
+                            // Check which of all the options in the dropdown menu is selected when "check" button is clicked
+                            "room": document.getElementById("Salles").value,
+    
+                            "8:00-09:30": document.getElementById("8:00-09:30").checked,
+                            "9:45-11:15": document.getElementById("9:45-11:15").checked,
+                            "11:30-13:00": document.getElementById("11:30-13:00").checked,
+                            "13:00-14:30": document.getElementById("13:00-14:30").checked,
+                            "14:45-16:15": document.getElementById("14:45-16:15").checked,
+                            "16:30-18:00": document.getElementById("16:30-18:00").checked,
+                            "18:15-19:45": document.getElementById("18:15-19:45").checked
+                        };
+                        // Remove 'false' values from the JSON
+                        for (var key in json) {
+                            if (json[key] == false) {
+                                delete json[key];
+                            }
+                        }
+                        // Print keys of the JSON in a new json
+                        var json2 = Object.keys(json);
+                        // isolate only the créneaux horaires
+                        var json3 = json2.slice(1);
+                        // Print the json3 in a new json
+                        var json4 = JSON.stringify(json3);
+                        // Print the new json in the console
+                        console.log(json4);
+                        // Seperate the json2 in 2 arrays, one for the rooms and one for the hours
+                        var hours = [];
+    
+                        // Take value of date1 and date2
+                        var date1 = document.getElementById("date1").value;
+                        var date2 = document.getElementById("date2").value;
+                        var roomselected = document.getElementById("Salles").value;
+                        console.log(date1);
+                        console.log(date2);
+                        // Print which rooms is selected in the dropdown menu
+    
+                        // Print the 2 arrays in the console                    console.log(hours); // Print the hours in the console
+                        console.log(roomselected); // Print the room selected in the dropdown menu
+    
+                        // Send the 2 arrays to the server with the POST method on '/view_pannel'
+                        var xhr = new XMLHttpRequest();
+                        xhr.open("POST", "/view_pannel", true);
+                        xhr.setRequestHeader('Content-Type', 'application/json');
+                        xhr.send(JSON.stringify({
+                            hours: hours
+                        }));
+    
+                        // Create a function to get the response from the server
+                        xhr.onreadystatechange = function () {
+                            if (xhr.readyState == 4 && xhr.status == 200) {
+                                var response = xhr.responseText;
+                                console.log(response);
+                            }
+                        }
+                    }
+                    function remove_filter(event) {
+                      event.preventDefault();
+                        // uncheck all checkboxes
+                        document.getElementById("8:00-09:30").checked = false;
+                        document.getElementById("9:45-11:15").checked = false;
+                        document.getElementById("11:30-13:00").checked = false;
+                        document.getElementById("13:00-14:30").checked = false;
+                        document.getElementById("14:45-16:15").checked = false;
+                        document.getElementById("16:30-18:00").checked = false;
+                        document.getElementById("18:15-19:45").checked = false;
+                        // Uncheck calendar
+                        document.getElementById("date1").value = "";
+                        document.getElementById("date2").value = "";
+                    }
+                </script>
+            </form>
+        </div>
+
+        <!-- Create list of créneaux horaires -->
+        <div class="creneau_horraires">
+            <form>
+                <!-- Add "Créneaux horaires" title -->
+                <h3>Créneaux horaires</h3>
+                <input type="checkbox" name="8:00-09:30"  value="8:00-09:30"  id = "8:00-09:30">8:00-09:30<br>
+                <input type="checkbox" name="9:45-11:15"  value="9:45-11:15"  id = "9:45-11:15">9:45-11:15<br>
+                <input type="checkbox" name="11:30-13:00" value="11:30-13:00" id = "11:30-13:00">11:30-13:00<br>
+                <input type="checkbox" name="13:00-14:30" value="13:00-14:30" id = "13:00-14:30">13:00-14:30<br>
+                <input type="checkbox" name="14:45-16:15" value="14:45-16:15" id = "14:45-16:15">14:45-16:15<br>
+                <input type="checkbox" name="16:30-18:00" value="16:30-18:00" id = "16:30-18:00">16:30-18:00<br>
+                <input type="checkbox" name="18:15-19:45" value="18:15-19:45" id = "18:15-19:45">18:15-19:45<br>
+            </form>
+        </div>
+
+        <!-- Create 2 calandars -->
+        <div class="calandars">
+            <h3>Dates</h3>
+            <form>
+                <input type="date" name="bday" min="2018-01-01" max="2030-12-31" id = "date1">
+                <input type="date" name="bday" min="2018-01-01" max="2030-12-31" id = "date2">
+            </form>
+        </div>
+    
+        <!-- Create a button "Save filters" -->
+        <div class="savefilter">
+            <form>
+                <input type="submit" value="Appliquer" id="Appliquer" onclick="promptExcelFile(event)">
+                <!-- Create a fastApi request with the selected filters -->
+    
+            </form>
+        </div>
+    
+        <!-- Create a button "Delete filters" -->
+        <div class="deletefilter">
+            <form>
+                <input type="submit" value="Réinitialiser" id="Réinitialiser" onclick="remove_filter(event)">
+            </form>
+        </div>
+    
+    
+        <!-- Create a button "Donwload xlsx file" -->
+        <div class="download">
+            <form>
+                <input class="Recup_excel" type="submit" value="Récupérer le fichier .xlsx" id="Récupérer fichier .xlsx" onclick="downloadExcel(event)">
+            </form>
+        </div>
+
+        <script>
+          // Script to download the xlsx file
+          function downloadExcel(event){
+            event.preventDefault();
+            const options = {
+              method: 'GET',
+            
+              headers: {
+                'Content-Type': 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet', 
+              },
+            }
+            fetch('http://127.0.0.1:8000/reader_panel/read_excel', options)
+            .then((res) => { return res.blob(); })
+            .then((data) => {
+            var a = document.createElement("a");
+            a.href = window.URL.createObjectURL(data);
+            a.download = "output.xlsx";
+            a.click();
+});
+          }
+        </script>
+        </div>
+    
+       <!-- Create a div "Planning" with a box -->
+        <div class="planning">
+          <div id="excel_data" class="excelbox"></div>
+        </div>
+
+        <script>
+          // Script to read the excel file //
+
+          function promptExcelFile(event){
+            event.preventDefault();
+
+            const options = {
+              method: 'GET',
+            
+              headers: {
+                'Content-Type': 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet', 
+              },
+            }
+
+            fetch('http://127.0.0.1:8000/reader_panel/read_excel', options)
+            .then(res => res.arrayBuffer())
+            .then(res => {
+              console.log('excel_file:', res);
+              var work_book = XLSX.read(new Uint8Array(res), {type: 'array'});
+              var sheet_name = work_book.SheetNames;
+              var sheet_data = XLSX.utils.sheet_to_json(work_book.Sheets[sheet_name[0]], {header:1});
+
+              if(sheet_data.length > 0){
+                var seuil_alerte = 50/100;
+                var max_event = 204;
+                var table_output = '<table class="table table-bordered table-striped" style="background-color: white" width="1100">';
+                for(var row = 0; row < sheet_data.length; row++){
+                  table_output += '<tr>';
+                  for(var cell = 0; cell < sheet_data[0].length+2; cell++){
+                    if(cell == 0 && row == 0){
+                      table_output += '<td width="10%">' + 'Date' + '</td>';
+                    }
+                    else if(cell == 0 || (row == 16 && cell == 9 ) || (row == 19 && cell == 9)){
+                      // convert the cell value from int8 to date jj/mm/aaaa
+                      var date = new Date(Math.round((sheet_data[row][cell] - 25569)*86400*1000));
+                      var day = date.getDate();
+                      // if the day is less than 10, add a 0 before the day
+                      if(day < 10){
+                        day = '0' + day;
+                      }
+                      var month = date.getMonth() + 1;
+                      // if the month is less than 10, add a 0 before the month
+                      if(month < 10){
+                        month = '0' + month;
+                      }
+                      var year = date.getFullYear();
+                      
+                      table_output += '<td width="10%">' + day + '/' + month + '/' + year + '</td>';
+                    }
+                    else if(sheet_data[row][cell] == undefined && cell < sheet_data[0].length){
+                      table_output += '<td width="10%" style="background-color: #00B0F0">' + '' + '</td>';
+                    }
+                    else if(sheet_data[row][cell] == undefined && cell >= sheet_data[0].length){
+                      table_output += '<td width="10%">' + '' + '</td>';
+                    }
+                    else if(sheet_data[row][cell] > seuil_alerte * max_event){
+                      table_output += '<td width="10%" style="background-color: #ff0000">' + sheet_data[row][cell] + '</td>';
+                    }
+                    else if((sheet_data[row][cell] > seuil_alerte * max_event * 0.6) && (sheet_data[row][cell] <= seuil_alerte * max_event)){
+                      table_output += '<td width="10%" style="background-color: #ffc000">' + sheet_data[row][cell] + '</td>';
+                    }
+                    else if((sheet_data[row][cell] > seuil_alerte * max_event * 0.2) && (sheet_data[row][cell] <= seuil_alerte * max_event * 0.6)){
+                      table_output += '<td width="10%" style="background-color: #ffff00">' + sheet_data[row][cell] + '</td>';
+                    }
+                    else if((sheet_data[row][cell] >= 0) && (sheet_data[row][cell] <= seuil_alerte * max_event * 0.2)){
+                      table_output += '<td width="10%" style="background-color: #00B050">' + sheet_data[row][cell] + '</td>';
+                    }
+                    else{
+                      table_output += '<td width="10%">' + sheet_data[row][cell] + '</td>';
+                    }
+                  }
+                  table_output += '</tr>';
+                }
+                table_output += '</table>';
+                document.getElementById("excel_data").innerHTML = table_output;
+              }
+            });
+          };
+        </script>
+      </main>
+      {% if right == "ADMIN" %}
+        {% include 'admin/admin_menu.html' %}
+      {% endif %}
+
+      {% if right == "SUPERVISOR" %}
+        {% include 'supervisor/supervisor_menu.html' %}
+      {% endif %}
+
+      {% if right == "READER" %}
+        {% include 'reader/reader_menu.html' %}
+      {% endif %}
+  </body>
+</html>

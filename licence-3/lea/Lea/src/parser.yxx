@@ -1,0 +1,255 @@
+%{
+
+#include "automaton.hpp"
+#include "set.hpp"
+#include <string>
+
+using namespace univ_nantes;
+
+#define YYSTYPE automaton
+extern YYSTYPE yylval;
+extern char* yyid;
+
+extern FILE *yyin;
+int yylex (void);
+void yyerror (char const *);
+
+// value of the last terminal that was observed by the lexer
+extern char terminal;
+// value of the last non-terminal that was observed by the lexer
+extern int non_terminal;
+// value of the previous-to-last non-terminal that was observed by the lexer
+extern int previous_non_terminal;
+// value of the last identifier that was observed by the lexer
+extern std::string identifier;
+
+// The set of automata that were already parsed
+set<automaton> automata;
+
+// Variable used to generate states whenever needed
+int new_state=0;
+
+%}
+
+// Tokens used to communicate between the lexer and the parser
+%token  AUTOMATE_KW
+%token  INITIAL_KW FINAL_KW
+%token  SEMICOLON EQUAL
+%token  OR STAR PLUS
+%token  L_PAR R_PAR L_BRACE R_BRACE L_TRANS R_TRANS
+%token  IDENTIFIER TERMINAL NONTERMINAL 
+
+// Initial rule of the grammar
+%start input
+
+%%
+
+input:
+| input automaton
+| input rationnal
+;
+
+////////////////////AUTOMATES////////////////////
+automaton: IDENTIFIER EQUAL L_BRACE automaton_fields R_BRACE   {$$ = $4.determine(); $$.name = identifier; automata |= $$;}
+;
+
+// example: Initial 1; (1 is an initial state)
+// example: Final 2;   (2 is a final state)
+// example: 1 |-a-> 2; (transition labeled by 'a' from state 1 to state 2)
+// example: 2 |--> 1;  (epsilon transition from state 1 to state 2)
+
+automaton_fields:                                                             {$$ = automaton();}
+| automaton_fields INITIAL_KW  NONTERMINAL SEMICOLON                          {$$ = $1; $$.initials |= non_terminal;}
+| automaton_fields FINAL_KW NONTERMINAL SEMICOLON                             {$$ = $1; $$.finals |= non_terminal;}
+| automaton_fields NONTERMINAL L_TRANS TERMINAL R_TRANS NONTERMINAL SEMICOLON {$$ = $1; $$.transitions |= transition(previous_non_terminal, terminal, non_terminal);}
+| automaton_fields NONTERMINAL L_TRANS          R_TRANS NONTERMINAL SEMICOLON {$$ = $1; $$.transitions |= transition(previous_non_terminal, non_terminal);}
+;
+
+
+////////////////////RATIONEL////////////////////
+
+rationnal: IDENTIFIER EQUAL rationnal_rules SEMICOLON 
+{
+  $$ = $3.determine(); 
+  $$.name = identifier; 
+  automata |= $$;
+} 
+;
+
+/*
+ * rationnal_rules --> concat
+ */
+rationnal_rules:            {$$ = automaton();}
+  | concat                  {$$ = $1;}
+;
+
+/*
+ *  concat --> concat par     
+ *  concat --> par 
+ *  concat --> concat plus
+ *  concat --> plus
+ *  concat --> concat star
+ *  concat --> star
+ */
+concat:
+  | concat par                                                      
+{
+  $$.initials    |= $1.initials; 
+  $$.transitions  = {$1.transitions};
+  $$.transitions |= $2.transitions;
+
+  for (int finalState : $1.finals) {
+    for (int initialState : $2.initials) {
+      $$.transitions |= transition(finalState, initialState);
+    }
+  }
+
+  $$.finals = {$2.finals};
+}
+  | par        
+{
+  $$ = $1;
+}
+  | concat plus
+{
+  $$.initials    |= $1.initials; 
+  $$.transitions  = {$1.transitions};
+  $$.transitions |= $2.transitions;
+
+  for (int finalState : $1.finals) {
+    for (int initialState : $2.initials) {
+      $$.transitions |= transition(finalState, initialState);
+    }
+  }
+
+  $$.finals = {$2.finals};
+}
+  | plus
+{
+  $$ = $1;
+}
+  | concat star
+{
+  $$.initials    |= $1.initials; 
+  $$.transitions  = {$1.transitions};
+  $$.transitions |= $2.transitions;
+
+  for (int finalState : $1.finals) {
+    for (int initialState : $2.initials) {
+      $$.transitions |= transition(finalState, initialState);
+    }
+  }
+
+  $$.finals = {$2.finals};
+}
+  | star
+{
+  $$ = $1;
+}
+;
+
+/*
+ *  par --> L_PAR concat OR concat R_PAR      
+ *  par --> L_PAR concat R_PAR STAR    
+ *  par --> L_PAR concat R_PAR PLUS
+ *  par --> TERMINAL
+ */
+par: 
+ | L_PAR concat OR concat R_PAR      
+{
+  $$.initials    = {$2.initials};
+  $$.finals      = {$2.finals};
+  $$.transitions = {$2.transitions};
+
+  $$.initials    |= $4.initials;
+  $$.finals      |= $4.finals;
+  $$.transitions |= $4.transitions;
+}
+  | L_PAR concat R_PAR STAR    
+{
+  $$.initials     = {$2.initials};
+  $$.finals       = {$2.finals};
+  $$.finals      |= $2.initials;
+  $$.transitions  = {$2.transitions};
+  $$.transitions |= transition($2.finals[0], $2.initials[0]);
+}
+  | L_PAR concat R_PAR PLUS
+{
+  $$.initials     = {$2.initials};
+  $$.finals       = {$2.finals};
+  $$.transitions  = {$2.transitions};
+  $$.transitions |= transition($2.finals[0], $2.initials[0]);
+}
+  | TERMINAL
+{
+  int tmp = new_state;
+  $$.initials    = {tmp};
+  new_state++;
+  $$.transitions = {transition(tmp, terminal, new_state)};
+  $$.finals      = {new_state};
+  new_state++;
+}
+;
+
+/*
+ *  plus --> par PLUS
+ */
+plus:
+  | par PLUS                                                                      
+{
+  $$.initials     = {$1.initials};
+  $$.finals       = {$1.finals};
+  $$.transitions  = {$1.transitions};
+  
+  // automate standard donc pas besoin de faire un pour tout les etat initiaux
+  for (int finalState : $1.finals) {
+    for (int initialState : $1.initials) {
+      $$.transitions |= transition(finalState, initialState); 
+    }
+  }
+}
+;
+
+/*
+ *  star --> par STAR
+ */
+star:
+  | par STAR                                                                       
+{
+  $$.initials     = {$1.initials};
+  $$.finals       = {$1.finals};
+  $$.finals      |= $1.initials;
+  $$.transitions  = {$1.transitions};
+
+  // automate standard donc pas besoin de faire un pour tout les etat initiaux
+  for (int finalState : $1.finals) {
+    for (int initialState : $1.initials) {
+      $$.transitions |= transition(finalState, initialState); 
+    }
+  }
+}
+;
+
+
+%%
+
+void yyerror(const char *s) {
+  printf("%s\n",s);
+}
+
+/*
+ * Parses the lea file whose name is file and returns a set of automata, recognizing languages in the input file
+ *
+ * This functions is called in function main, in file lea.cpp
+ * This functions is documented in file lea.cpp
+ */
+set<automaton> read_lea_file(char* file) {
+  automata = set<automaton>();   // initialize the set of automata
+  yyin=fopen(file,"r");          // connect the file to the lexer
+  if(yyin==NULL) {		 
+    printf("\n Error ! \n");
+  } else {
+    yyparse(); 	                 // read the file
+  }
+  return automata;
+}

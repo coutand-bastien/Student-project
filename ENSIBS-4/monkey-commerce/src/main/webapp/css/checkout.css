@@ -1,0 +1,112 @@
+/* Main content */
+#main-context {
+    padding: 50px;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+h2 {
+    font-size: 28px;
+    margin-bottom: 30px;
+}
+
+p {
+    margin-bottom: 30px;
+}
+
+form {
+    margin-bottom: 30px;
+}
+
+.error-message {
+    color: red;
+}
+
+.panelGrid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+}
+
+.outputLabel {
+    font-weight: bold;
+}
+
+.inputText {
+    padding: 10px;
+    font-size: 16px;
+    border: 2px solid #ccc;
+    border-radius: 4px;
+}
+
+#checkoutTable {
+    margin-top: 20px; /* ajoute de l'espace entre le haut du tableau et le reste de la page */
+    border-collapse: collapse;
+    width: 100%;
+    margin-bottom: 30px;
+}
+
+#checkoutTable th, #checkoutTable td {
+    padding: 12px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+}
+
+#checkoutTable th {
+    background-color: #f2f2f2;
+}
+
+#checkoutTable tfoot td {
+    font-weight: bold;
+    text-align: right;
+}
+
+#confirmButton {
+    background-color: #4CAF50;
+    color: white;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+#confirmButton:hover {
+    background-color: #3e8e41;
+}
+
+/* Personnalisation des inputs */
+input[type="text"], input[type="email"], input[type="tel"] {
+    width: 100%;
+    padding: 8px;
+    border-radius: 4px;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+    margin-bottom: 10px;
+}
+
+/* Style pour les inputs requis */
+input:required {
+    border-color: #ff4d4d;
+}
+
+/* Style pour les inputs invalides */
+input:invalid {
+    border-color: #ff4d4d;
+}
+
+/* Bouton Continuer */
+.confirm-btn {
+    background-color: #1eaedb;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 10px 5px;
+    cursor: pointer;
+    border-radius: 5px;
+    width: 100%;
+}

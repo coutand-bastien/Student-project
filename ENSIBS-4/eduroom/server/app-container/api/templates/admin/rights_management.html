@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"  integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"  crossorigin="anonymous">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous"/>
+    <link rel="stylesheet" href="{{ url_for('static', path='css/rights_management.css') }} " />
+    <link rel="stylesheet" href="{{ url_for('static', path='css/menu.css') }} "/>
+    <title>MAJ des rôles</title>
+  </head>
+
+  <body id="body">
+    <div class="first-container">
+      
+      {% include 'header.html' %}
+      
+      <main>
+        <div class="main__container">
+          
+          <h1 class="text-center">Gestion des utilisateurs</h1>
+          <div class="container" style="margin-top: 30px;">
+          
+            <input type="search" id="search" placeholder="Filter users..." onkeyup="search()" autofocus/>
+
+            <div class="my-4 shadow rounded-lg overflow-hidden">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th scope="col">ID</th>
+                    <th scope="col">Date création</th>
+                    <th scope="col">Date MAJ</th>
+                    <th scope="col">Modifier rôle</th>
+                  </tr>
+                </thead>
+
+                <tbody id="user-list">
+                  {% for user in users %}                
+                    <tr>
+                      <td>{{ user[0] }}</td>
+                      <td>{{ user[1] }}</td>
+                      <td>{{ user[2] }}</td>
+                      <td>
+                        <select class="authorization-select" onchange="update_authorization(this, '{{ user[0] }}')">
+                          <option value="default">{{ user[3] }}</option>
+                          {% for right in authorizations %}
+                            {% if right.authorization_name != user[3] and right.authorization_name != "NEW_USER" %}
+                              <option value="{{ right.authorization_name }}">{{ right.authorization_name }}</option>
+                            {% endif %}
+                          {% endfor %}
+                        </select>
+                      </td>
+                    </tr>
+                  {% endfor %}
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </main>
+
+      <script src=" {{ url_for('static', path='js/rights_management.js') }} "></script>
+
+      {% include 'admin/admin_menu.html' %}
+    </div>
+  </body>
+</html>

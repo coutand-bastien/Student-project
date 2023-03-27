@@ -1,0 +1,104 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:c="http://java.sun.com/jsp/jstl/core"
+      xmlns:f="http://java.sun.com/jsf/core">
+
+<h:head>
+    <title>Checkout</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <link rel="stylesheet" type="text/css" href="css/checkout.css"/>
+    <link rel="stylesheet" type="text/css" href="css/menu.css" />
+</h:head>
+
+<h:body>
+    <div id="header">
+        <div class="logo">
+            <img src="assets/logo.png" alt="logo" class="logo"/>
+        </div>
+        <ul class="menu">
+            <li><a href="#">Accueil</a></li>
+            <li><h:link value="Produits" outcome="#{controllerBean.shop}"/></li>
+            <li><h:link value="Panier" outcome="#{controllerBean.cart}"/></li>
+            <li><a href="#">Contact</a></li>
+        </ul>
+    </div>
+
+    <div id="main-context">
+        <h2>Checkout</h2>
+        <p>In order to purchase the items in your shopping cart, please provide us with the following information:</p>
+
+        <h:form id="purchase-form">
+            <h:message for="purchase-form" styleClass="error-message" />
+            <h:panelGrid columns="2">
+                <h:outputLabel for="name" value="Nom : " />
+                <h:inputText id="name" value="#{cartBean.cart.customer.name}" required="true">
+                    <f:validateLength minimum="0" maximum="45" />
+                    <f:validateRegex pattern="^[a-zA-ZÀ-ÖØ-öø-ÿ\s'-]{1,45}$"/>
+                </h:inputText>
+
+                <h:outputLabel for="email" value="Email : " />
+                <h:inputText id="email" value="#{cartBean.cart.customer.email}" required="true">
+                    <f:validateLength minimum="0" maximum="45" />
+                    <f:validateRegex pattern="^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$" />
+                </h:inputText>
+
+                <h:outputLabel for="phone" value="Téléphone : " />
+                <h:inputText id="phone" value="#{cartBean.cart.customer.phone}" required="true">
+                    <f:validateLength minimum="0" maximum="10" />
+                    <f:validateRegex pattern="^[0-9]{10}$" />
+                </h:inputText>
+
+                <h:outputLabel for="address" value="Adresse : " />
+                <h:inputText id="address" value="#{cartBean.cart.customer.address}" required="true">
+                    <f:validateLength minimum="0" maximum="45" />
+                    <f:validateRegex pattern="^([0-9]*) ?([a-zA-Z,'\. ]*) ?([0-9]{0,5}) ?([a-zA-Z]*)$"/>
+                </h:inputText>
+
+                <h:outputLabel for="cityRegion" value="Région : " />
+                <h:inputText id="cityRegion" value="#{cartBean.cart.customer.cityRegion}" required="true">
+                    <f:validateLength minimum="0" maximum="45" />
+                </h:inputText>
+
+                <h:outputLabel for="creditCardNumber" value="Numéro de carte de crédit : " />
+                <h:inputText id="creditCardNumber" value="#{cartBean.cart.customer.creditCardNumber}" required="true">
+                    <f:validateLength minimum="0" maximum="19" />
+                    <f:validateRegex pattern="^[0-9]{19}$" />
+                </h:inputText>
+            </h:panelGrid>
+
+            <div id="checkout">
+                <table id="checkoutTable">
+                    <thead>
+                        <tr>
+                            <th>Référence</th>
+                            <th>Quantité</th>
+                            <th>Prix unitaire</th>
+                            <th>Sous-total</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <c:forEach items="#{cartBean.cart.items}" var="item">
+                            <tr>
+                                <td><h:outputText value="#{item.product.name}"/></td>
+                                <td><h:outputText value="#{item.quantity}"/></td>
+                                <td><h:outputText value="#{item.product.price}"/></td>
+                                <td><h:outputText value="#{item.quantity * item.product.price}"/></td>
+                            </tr>
+                        </c:forEach>
+                    </tbody>
+                    <tfoot>
+                        <tr>
+                            <td colspan="3"><h:outputText value="Total"/></td>
+                            <td><h:outputText value="#{cartBean.cart.total}"/></td>
+                        </tr>
+                    </tfoot>
+                    </table>
+                </div>
+                <h:commandButton class="confirm-btn" id="confirmButton" value="Confirmer l'achat" action="#{cartBean.purchase()}" />
+            </h:form>
+        </div>
+    </h:body>
+</html>
