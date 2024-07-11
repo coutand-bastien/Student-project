@@ -16,10 +16,10 @@
 This project involves solving two challenges related to flow classification in network security. The challenges include building classifiers for specific application protocols (HTTPWeb and SSH) and a general classifier for various applications using XML files for training and testing.
 
 ## Installation
-Cf. page [ElasticSearch configuration](https://github.com/coutand-bastien/AI/wiki/ElasticSearch-configuration) on the wiki.
+Cf. page [ElasticSearch configuration](./wiki/ElasticSearch-configuration) on the wiki.
 
 ## Usage
-Cf. page [Run](https://github.com/coutand-bastien/AI/wiki/Run-and-configure-the-project) on the wiki.
+Cf. page [Run](./wiki/Run-and-configure-the-project) on the wiki.
 
 ## Contributors
 - COUTAND Bastien (coutand.e2100676@etud.univ-ubs.fr)
