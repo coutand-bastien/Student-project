@@ -1,0 +1,485 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>utils.modeling package &mdash; IA - Flow Classification V1 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../static/pygments.css?v=92fd9be5" />
+      <link rel="stylesheet" type="text/css" href="../static/css/theme.css?v=19f00094" />
+
+  
+  <!--[if lt IE 9]>
+    <script src="../static/js/html5shiv.min.js"></script>
+    <![endif]-->
+  
+        <script src="../static/jquery.js?v=5d32c60e"></script>
+        <script src="../static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="../static/documentation_options.js?v=7351be05"></script>
+        <script src="../static/doctools.js?v=888ff710"></script>
+        <script src="../static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="utils.modeling.parser package" href="utils.modeling.parser.html" />
+    <link rel="prev" title="utils.config package" href="utils.config.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            IA - Flow Classification
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="utils.html">utils package</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="utils.html#subpackages">Subpackages</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="utils.classifier.html">utils.classifier package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="utils.config.html">utils.config package</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">utils.modeling package</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#subpackages">Subpackages</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#module-utils.modeling.Accessing">Accessing class</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#module-utils.modeling.AccessingSecondChallenge">AccessingSecondChallenge class</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#module-utils.modeling.Indexing">Indexing class</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="utils.tools.html">utils.tools package</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="web-api.html">web-api package</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">IA - Flow Classification</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="utils.html">utils package</a></li>
+      <li class="breadcrumb-item active">utils.modeling package</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/utils.modeling.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="utils-modeling-package">
+<h1>utils.modeling package<a class="headerlink" href="#utils-modeling-package" title="Link to this heading"></a></h1>
+<section id="subpackages">
+<h2>Subpackages<a class="headerlink" href="#subpackages" title="Link to this heading"></a></h2>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="utils.modeling.parser.html">utils.modeling.parser package</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="utils.modeling.parser.html#module-utils.modeling.parser.ParserTestDataFirstChallenge">ParserTestDataFirstChallenge class</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="utils.modeling.parser.html#utils.modeling.parser.ParserTestDataFirstChallenge.ParserTestDataFirstChallenge"><code class="docutils literal notranslate"><span class="pre">ParserTestDataFirstChallenge</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="utils.modeling.parser.html#utils.modeling.parser.ParserTestDataFirstChallenge.ParserTestDataFirstChallenge.get_xml_files"><code class="docutils literal notranslate"><span class="pre">ParserTestDataFirstChallenge.get_xml_files()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="utils.modeling.parser.html#utils.modeling.parser.ParserTestDataFirstChallenge.ParserTestDataFirstChallenge.parse"><code class="docutils literal notranslate"><span class="pre">ParserTestDataFirstChallenge.parse()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="utils.modeling.parser.html#utils.modeling.parser.ParserTestDataFirstChallenge.ParserTestDataFirstChallenge.parse_from_xml_test_data"><code class="docutils literal notranslate"><span class="pre">ParserTestDataFirstChallenge.parse_from_xml_test_data()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="utils.modeling.parser.html#module-utils.modeling.parser.ParserTestSecondChallenge">ParserTestSecondChallenge class</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="utils.modeling.parser.html#utils.modeling.parser.ParserTestSecondChallenge.ParserTestSecondChallenge"><code class="docutils literal notranslate"><span class="pre">ParserTestSecondChallenge</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="utils.modeling.parser.html#utils.modeling.parser.ParserTestSecondChallenge.ParserTestSecondChallenge.get_xml_files"><code class="docutils literal notranslate"><span class="pre">ParserTestSecondChallenge.get_xml_files()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="utils.modeling.parser.html#utils.modeling.parser.ParserTestSecondChallenge.ParserTestSecondChallenge.parse_from_xml_test_data"><code class="docutils literal notranslate"><span class="pre">ParserTestSecondChallenge.parse_from_xml_test_data()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+</section>
+<section id="module-utils.modeling.Accessing">
+<span id="accessing-class"></span><h2>Accessing class<a class="headerlink" href="#module-utils.modeling.Accessing" title="Link to this heading"></a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="utils.modeling.Accessing.Accessing">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">utils.modeling.Accessing.</span></span><span class="sig-name descname"><span class="pre">Accessing</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">es:</span> <span class="pre">&lt;module</span> <span class="pre">'utils.config.ElasticConfig'</span> <span class="pre">from</span> <span class="pre">'/home/couttcoutt/Documents/S9/ia/projet/AI/src/utils/config/ElasticConfig.py'&gt;</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">index_name:</span> <span class="pre">str</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#utils.modeling.Accessing.Accessing" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>The <cite>Accessing</cite> class contains methods that perform various operations on an Elasticsearch index.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>es</strong> – An instance of the <cite>ElasticConfig</cite> class</p></li>
+<li><p><strong>index_name</strong> – The name of the Elasticsearch index</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="utils.modeling.Accessing.Accessing.display_diagram">
+<span class="sig-name descname"><span class="pre">display_diagram</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#utils.modeling.Accessing.Accessing.display_diagram" title="Link to this definition"></a></dt>
+<dd><p>The function <cite>get_Diagram</cite> retrieves the number of flows for each number of packets and draws a
+diagram with a logarithmic scale for the y-axis.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="utils.modeling.Accessing.Accessing.get_all_flows_by_applications">
+<span class="sig-name descname"><span class="pre">get_all_flows_by_applications</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">filenames</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">list</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">dict</span></span></span><a class="headerlink" href="#utils.modeling.Accessing.Accessing.get_all_flows_by_applications" title="Link to this definition"></a></dt>
+<dd><p>The function <cite>get_flows_by_filename_by_applications</cite> retrieves flows from Elasticsearch based on the
+specified filename and all the applications.
+:param filenames: The “filenames” parameter is a list of strings that represents the name of the
+:return: The function <cite>get_flows_by_filename_by_applications</cite> returns a dictionary containing the
+results of a search
+:rtype: dict</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="utils.modeling.Accessing.Accessing.get_application_data">
+<span class="sig-name descname"><span class="pre">get_application_data</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">field_names</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">list</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#utils.modeling.Accessing.Accessing.get_application_data" title="Link to this definition"></a></dt>
+<dd><p>The <cite>get_ApplicationData</cite> function retrieves data from Elasticsearch for a list of applications and
+calculates the sum of specified fields for each application.
+:param field_names: The <cite>field_names</cite> parameter is a list of field names that you want to retrieve
+from the Elasticsearch index. These field names represent the specific data you are interested in
+retrieving for each application
+:return: a dictionary called “results” which contains the sum of the values of the specified field
+names for each application. The keys of the dictionary are the application names and the values are
+the sums.
+:rtype: dict</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="utils.modeling.Accessing.Accessing.get_application_flows">
+<span class="sig-name descname"><span class="pre">get_application_flows</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">application</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">list</span><span class="p"><span class="pre">[</span></span><span class="pre">dict</span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#utils.modeling.Accessing.Accessing.get_application_flows" title="Link to this definition"></a></dt>
+<dd><p>The function <cite>get_application_flows</cite> retrieves application flows from Elasticsearch based on the
+provided application name.
+:param application: The “application” parameter is a string that represents the name of the
+application for which you want to retrieve the application flows
+:return: The function <cite>get_ApplicationFlows</cite> returns a dictionary containing the results of a search
+query performed on an Elasticsearch index.
+:rtype: list[dict]</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="utils.modeling.Accessing.Accessing.get_application_payload_size">
+<span class="sig-name descname"><span class="pre">get_application_payload_size</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">dict</span></span></span><a class="headerlink" href="#utils.modeling.Accessing.Accessing.get_application_payload_size" title="Link to this definition"></a></dt>
+<dd><p>The above code defines three functions in a Python class that retrieve different types of data
+related to applications.
+:return: dictionary
+:rtype: dict</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="utils.modeling.Accessing.Accessing.get_application_total_bytes">
+<span class="sig-name descname"><span class="pre">get_application_total_bytes</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">dict</span></span></span><a class="headerlink" href="#utils.modeling.Accessing.Accessing.get_application_total_bytes" title="Link to this definition"></a></dt>
+<dd><p>The function “get_application_total_bytes” returns a dictionary containing the total source bytes
+and total destination bytes of an application.
+:return: A dictionary containing the values of “totalSourceBytes” and “totalDestinationBytes”
+from the application data.
+:rtype: dict</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="utils.modeling.Accessing.Accessing.get_application_total_packets">
+<span class="sig-name descname"><span class="pre">get_application_total_packets</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">dict</span></span></span><a class="headerlink" href="#utils.modeling.Accessing.Accessing.get_application_total_packets" title="Link to this definition"></a></dt>
+<dd><p>The function “get_application_total_packets” returns a dictionary containing the total number of
+source packets and destination packets.
+:return: A dictionary containing the values of “totalSourcePackets” and
+“totalDestinationPackets” from the application data.
+:rtype: dict</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="utils.modeling.Accessing.Accessing.get_applications">
+<span class="sig-name descname"><span class="pre">get_applications</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">list</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#utils.modeling.Accessing.Accessing.get_applications" title="Link to this definition"></a></dt>
+<dd><p>The function <cite>get_applications</cite> returns a set of unique application names obtained from an
+aggregation query.
+:return: a set of application names.
+:rtype: list[str]</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="utils.modeling.Accessing.Accessing.get_applications_flow_card">
+<span class="sig-name descname"><span class="pre">get_applications_flow_card</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">dict</span></span></span><a class="headerlink" href="#utils.modeling.Accessing.Accessing.get_applications_flow_card" title="Link to this definition"></a></dt>
+<dd><p>The function <cite>get_ApplicationNumberOfFlows</cite> returns a dictionary with the count of flows for each
+application name.
+:return: a dictionary where the keys are the names of applications and the values are the number of
+flows associated with each application.
+:rtype: dict</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="utils.modeling.Accessing.Accessing.get_attack_and_normal_flows_by_application">
+<span class="sig-name descname"><span class="pre">get_attack_and_normal_flows_by_application</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">app_name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">dict</span></span></span><a class="headerlink" href="#utils.modeling.Accessing.Accessing.get_attack_and_normal_flows_by_application" title="Link to this definition"></a></dt>
+<dd><p>The function <cite>get_attack_flows</cite> retrieves attack flows from Elasticsearch based on the specified
+application name.
+:param app_name: The “app_name” parameter is a string that represents the name of the application
+you want to search for in the “flows” index
+:return: The function <cite>get_attack_flows</cite> returns a dictionary containing the results of a search;
+:rtype: dict</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="utils.modeling.Accessing.Accessing.get_nb_flows_for_each_nb_packets">
+<span class="sig-name descname"><span class="pre">get_nb_flows_for_each_nb_packets</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#utils.modeling.Accessing.Accessing.get_nb_flows_for_each_nb_packets" title="Link to this definition"></a></dt>
+<dd><p>The function <cite>get_nb_flows_for_each_nb_packets</cite> retrieves the number of flows for each number of
+packets.
+:return: a list of dictionaries.
+:rtype: list[dict]</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="utils.modeling.Accessing.Accessing.get_payload_size">
+<span class="sig-name descname"><span class="pre">get_payload_size</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">w_field</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">dict</span></span></span><a class="headerlink" href="#utils.modeling.Accessing.Accessing.get_payload_size" title="Link to this definition"></a></dt>
+<dd><p>The function <cite>get_payload_size</cite> returns a dictionary containing the total source and destination
+:param w_field: application or protocol
+:return: a dictionary where the keys are the names of the applications or protocols and the values
+:rtype: dict</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="utils.modeling.Accessing.Accessing.get_protocol_datas">
+<span class="sig-name descname"><span class="pre">get_protocol_datas</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">field_names</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">list</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#utils.modeling.Accessing.Accessing.get_protocol_datas" title="Link to this definition"></a></dt>
+<dd><p>The <cite>get_protocol_datas</cite> function retrieves data from the “flows” index based on specified field names
+and protocol names, and returns the sum of the values for each protocol.
+:param field_names: The <cite>field_names</cite> parameter is a list of field names that you want to retrieve
+from the search results. These field names should correspond to the fields in the documents stored
+in the ‘flows’ index
+:return: a dictionary where the keys are protocol names and the values are the sum of the specified
+field names for each protocol.
+:rtype: dict</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="utils.modeling.Accessing.Accessing.get_protocol_flows">
+<span class="sig-name descname"><span class="pre">get_protocol_flows</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">protocol</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">list</span><span class="p"><span class="pre">[</span></span><span class="pre">dict</span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#utils.modeling.Accessing.Accessing.get_protocol_flows" title="Link to this definition"></a></dt>
+<dd><p>The function <cite>get_protocol_flows</cite> retrieves protocol flows from Elasticsearch based on the specified
+protocol name.
+:param protocol: The “protocol” parameter is a string that represents the name of the protocol you
+want to search for in the “flows” index
+:return: The function <cite>get_ProtocolFlows</cite> returns a dictionary containing the results of a search
+query.
+:rtype: list[dict]</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="utils.modeling.Accessing.Accessing.get_protocols">
+<span class="sig-name descname"><span class="pre">get_protocols</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#utils.modeling.Accessing.Accessing.get_protocols" title="Link to this definition"></a></dt>
+<dd><p>The function <cite>get_protocols</cite> returns a set of unique protocol names obtained from an aggregation
+query.
+:return: a set of protocol names.
+:rtype: list[str]</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="utils.modeling.Accessing.Accessing.get_protocols_flow_card">
+<span class="sig-name descname"><span class="pre">get_protocols_flow_card</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">dict</span></span></span><a class="headerlink" href="#utils.modeling.Accessing.Accessing.get_protocols_flow_card" title="Link to this definition"></a></dt>
+<dd><p>The function <cite>get_protocols_number_flows</cite> returns a dictionary containing the number of flows for each
+protocol name.
+:return: a dictionary where the keys are the protocol names and the values are the number of flows
+associated with each protocol.
+:rtype: dict</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="utils.modeling.Accessing.Accessing.get_protocols_payload_size">
+<span class="sig-name descname"><span class="pre">get_protocols_payload_size</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">dict</span></span></span><a class="headerlink" href="#utils.modeling.Accessing.Accessing.get_protocols_payload_size" title="Link to this definition"></a></dt>
+<dd><p>The above code defines three functions that retrieve different types of data related to protocols.
+:return: The functions <cite>get_ProtocolsPayloadSize</cite>, <cite>get_ProtocolsTotalBytes</cite>, and
+<cite>get_ProtocolsTotalPackets</cite> are returning a dictionary.
+:rtype: dict</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="utils.modeling.Accessing.Accessing.get_protocols_total_bytes">
+<span class="sig-name descname"><span class="pre">get_protocols_total_bytes</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">dict</span></span></span><a class="headerlink" href="#utils.modeling.Accessing.Accessing.get_protocols_total_bytes" title="Link to this definition"></a></dt>
+<dd><p>The function “get_protocols_total_bytes” returns a dictionary containing the total source bytes and
+:return: A dictionary containing the total source bytes and total destination bytes for each
+:rtype: dict</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="utils.modeling.Accessing.Accessing.get_protocols_total_packets">
+<span class="sig-name descname"><span class="pre">get_protocols_total_packets</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">dict</span></span></span><a class="headerlink" href="#utils.modeling.Accessing.Accessing.get_protocols_total_packets" title="Link to this definition"></a></dt>
+<dd><p>The function “get_protocols_total_packets” returns a dictionary containing the total number of
+source and destination packets for each protocol.
+:return: A dictionary containing the total number of source packets and total number of
+destination packets for each protocol.
+:rtype: dict</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="utils.modeling.Accessing.Accessing.get_stats_applications">
+<span class="sig-name descname"><span class="pre">get_stats_applications</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">str</span></span></span><a class="headerlink" href="#utils.modeling.Accessing.Accessing.get_stats_applications" title="Link to this definition"></a></dt>
+<dd><p>The function <cite>get_stats_applications</cite> displays the total number of flows and the total payload size
+:return: a string
+:rtype: str</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="utils.modeling.Accessing.Accessing.get_stats_protocols">
+<span class="sig-name descname"><span class="pre">get_stats_protocols</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">str</span></span></span><a class="headerlink" href="#utils.modeling.Accessing.Accessing.get_stats_protocols" title="Link to this definition"></a></dt>
+<dd><p>The function <cite>get_stats_protocols</cite> displays the total number of flows and the total payload size
+:return: a string
+:rtype: str</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="utils.modeling.Accessing.Accessing.search_function">
+<span class="sig-name descname"><span class="pre">search_function</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">query:</span> <span class="pre">dict</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fields:</span> <span class="pre">[&lt;class</span> <span class="pre">'str'&gt;]</span> <span class="pre">=</span> <span class="pre">None</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">list</span><span class="p"><span class="pre">[</span></span><span class="pre">dict</span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#utils.modeling.Accessing.Accessing.search_function" title="Link to this definition"></a></dt>
+<dd><p>The function <cite>search_function</cite> retrieves all the hits from a given Elasticsearch query by using the
+scroll API. If there is only one field, we can return a list of values instead of a list of dictionaries
+:param query: The “query” parameter is a dictionary that represents the Elasticsearch query you want to execute.
+:param fields: The “fields” parameter is a list of field names that you want to retrieve from the search results.
+default: None
+:return: The function <cite>search_function</cite> returns a list of dictionaries containing the results of a search query.
+:rtype: list[dict]</p>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="module-utils.modeling.AccessingSecondChallenge">
+<span id="accessingsecondchallenge-class"></span><h2>AccessingSecondChallenge class<a class="headerlink" href="#module-utils.modeling.AccessingSecondChallenge" title="Link to this heading"></a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="utils.modeling.AccessingSecondChallenge.AccessingSecondChallenge">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">utils.modeling.AccessingSecondChallenge.</span></span><span class="sig-name descname"><span class="pre">AccessingSecondChallenge</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">es</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="utils.config.html#utils.config.ElasticConfig.ElasticConfig" title="utils.config.ElasticConfig.ElasticConfig"><span class="pre">ElasticConfig</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">index_name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#utils.modeling.AccessingSecondChallenge.AccessingSecondChallenge" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>The <cite>AccessingSecondChallenge</cite> class contains methods that perform various operations on an Elasticsearch index, 
+on the second challenge data.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>es</strong> – The “es” parameter is an instance of the <cite>ElasticConfig</cite> class.</p></li>
+<li><p><strong>index_name</strong> – The “index_name” parameter is a string that represents the name of the index you want to access.</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="utils.modeling.AccessingSecondChallenge.AccessingSecondChallenge.get_attack_normal_victim_unknown_flows_part">
+<span class="sig-name descname"><span class="pre">get_attack_normal_victim_unknown_flows_part</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">index_part</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">dict</span></span></span><a class="headerlink" href="#utils.modeling.AccessingSecondChallenge.AccessingSecondChallenge.get_attack_normal_victim_unknown_flows_part" title="Link to this definition"></a></dt>
+<dd><p>The function <cite>get_attack_normal_victim_unknown_flows</cite> returns a dictionary containing the results of a search
+:param index_part: The “index_part” parameter is an integer that represents the index part you want to search.
+:return: The function <cite>get_attack_flows</cite> returns a dictionary containing the results of a search
+:rtype: dict</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="utils.modeling.AccessingSecondChallenge.AccessingSecondChallenge.search_function">
+<span class="sig-name descname"><span class="pre">search_function</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">query:</span> <span class="pre">dict</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fields:</span> <span class="pre">[&lt;class</span> <span class="pre">'str'&gt;]</span> <span class="pre">=</span> <span class="pre">None</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">list</span><span class="p"><span class="pre">[</span></span><span class="pre">dict</span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#utils.modeling.AccessingSecondChallenge.AccessingSecondChallenge.search_function" title="Link to this definition"></a></dt>
+<dd><p>The function <cite>search_function</cite> retrieves all the hits from a given Elasticsearch query by using the
+scroll API. If there is only one field, we can return a list of values instead of a list of dictionaries
+:param query: The “query” parameter is a dictionary that represents the Elasticsearch query you want to execute.
+:param fields: The “fields” parameter is a list of field names that you want to retrieve from the search results.
+default: None
+:return: The function <cite>search_function</cite> returns a list of dictionaries containing the results of a search query.
+:rtype: list[dict]</p>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="module-utils.modeling.Indexing">
+<span id="indexing-class"></span><h2>Indexing class<a class="headerlink" href="#module-utils.modeling.Indexing" title="Link to this heading"></a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="utils.modeling.Indexing.Indexing">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">utils.modeling.Indexing.</span></span><span class="sig-name descname"><span class="pre">Indexing</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">es</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="utils.config.html#utils.config.ElasticConfig.ElasticConfig" title="utils.config.ElasticConfig.ElasticConfig"><span class="pre">ElasticConfig</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">index_name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">is_second_challenge</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#utils.modeling.Indexing.Indexing" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>The <cite>Indexing</cite> class contains methods that parse XML files and insert the parsed data into. It also contains
+methods that create an Elasticsearch index and bulk insert the parsed data into Elasticsearch.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>es</strong> – The “es” parameter is an instance of the <cite>ElasticConfig</cite> class.</p></li>
+<li><p><strong>index_name</strong> – The “index_name” parameter is a string that represents the name of the index you want to create.</p></li>
+<li><p><strong>is_second_challenge</strong> – The “is_second_challenge” parameter is a boolean that indicates whether the data. Default: False</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="utils.modeling.Indexing.Indexing.create_index">
+<span class="sig-name descname"><span class="pre">create_index</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#utils.modeling.Indexing.Indexing.create_index" title="Link to this definition"></a></dt>
+<dd><p>The function creates an Elasticsearch index called “flows” with specific settings.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="utils.modeling.Indexing.Indexing.get_xml_files">
+<span class="sig-name descname"><span class="pre">get_xml_files</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">xml_path</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#utils.modeling.Indexing.Indexing.get_xml_files" title="Link to this definition"></a></dt>
+<dd><p>The function <cite>get_xml_files</cite> returns a list of XML file paths.
+:param xml_path: the path to the XML files
+:return: a list of XML file paths.
+:rtype: list[str]</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="utils.modeling.Indexing.Indexing.parse">
+<span class="sig-name descname"><span class="pre">parse</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#utils.modeling.Indexing.Indexing.parse" title="Link to this definition"></a></dt>
+<dd><p>The function <cite>parse</cite> parses XML files, creates an index if it doesn’t exist, and bulk inserts the
+parsed data into Elasticsearch. If the index already exists, it is deleted and recreated. This function
+is used for the first challenge and second challenge.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="utils.modeling.Indexing.Indexing.parse_from_xml_classic_data">
+<span class="sig-name descname"><span class="pre">parse_from_xml_classic_data</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">xml_files</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">list</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#utils.modeling.Indexing.Indexing.parse_from_xml_classic_data" title="Link to this definition"></a></dt>
+<dd><p>The <cite>parse_from_xml</cite> function parses XML files, creates an index if it doesn’t exist, and bulk inserts
+the parsed data into Elasticsearch.
+:param xml_files: The <cite>xml_files</cite> parameter is a list of XML file paths. The <cite>parseFromXML</cite> method
+takes this list as input and processes each XML file
+:type xml_files: list</p>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="utils.config.html" class="btn btn-neutral float-left" title="utils.config package" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="utils.modeling.parser.html" class="btn btn-neutral float-right" title="utils.modeling.parser package" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2023, COUTAND MARCHAND.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

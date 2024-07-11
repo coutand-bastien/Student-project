@@ -1,0 +1,10 @@
+utils.config package
+====================
+
+ElasticConfig class
+---------------------------------
+
+.. automodule:: utils.config.ElasticConfig
+   :members:
+   :undoc-members:
+   :show-inheritance:

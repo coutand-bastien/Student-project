@@ -1,0 +1,10 @@
+web\-api package
+================
+
+server fonction
+----------------------
+
+.. automodule:: web-api.server
+   :members:
+   :undoc-members:
+   :show-inheritance:

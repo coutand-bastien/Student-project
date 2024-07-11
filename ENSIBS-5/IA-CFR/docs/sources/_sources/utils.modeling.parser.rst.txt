@@ -1,0 +1,18 @@
+utils.modeling.parser package
+=============================
+
+ParserTestDataFirstChallenge class
+---------------------------------------------------------
+
+.. automodule:: utils.modeling.parser.ParserTestDataFirstChallenge
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+ParserTestSecondChallenge class
+------------------------------------------------------
+
+.. automodule:: utils.modeling.parser.ParserTestSecondChallenge
+   :members:
+   :undoc-members:
+   :show-inheritance:

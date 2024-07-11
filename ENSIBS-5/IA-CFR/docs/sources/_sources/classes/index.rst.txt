@@ -1,0 +1,19 @@
+========================
+Classes du module Classifier
+========================
+
+Classification class
+--------------------------------------
+
+.. autoclass:: utils.classifier.Classification
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+vectorization_functions class
+------------------------------------------------
+
+.. autoclass:: utils.classifier.vectorization_functions
+   :members:
+   :undoc-members:
+   :show-inheritance:

@@ -1,0 +1,26 @@
+utils.tools package
+===================
+
+check\_json\_result function
+--------------------------------------
+
+.. automodule:: utils.tools.check_json_result
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+json\_concat fonction
+-------------------------------
+
+.. automodule:: utils.tools.json_concat
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+xml\_splitter fonction
+--------------------------------
+
+.. automodule:: utils.tools.xml_splitter
+   :members:
+   :undoc-members:
+   :show-inheritance:

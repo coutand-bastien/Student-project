@@ -1,0 +1,18 @@
+utils.classifier package
+========================
+
+Classification class
+--------------------------------------
+
+.. automodule:: utils.classifier.Classification
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+vectorization\_functions module
+------------------------------------------------
+
+.. automodule:: utils.classifier.vectorization_functions
+   :members:
+   :undoc-members:
+   :show-inheritance:

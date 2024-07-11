@@ -1,0 +1,40 @@
+.. My Super Project Documentation
+
+.. toctree::
+   :maxdepth: 2
+
+   introduction
+   authors
+
+Introduction
+=============
+
+Bienvenue dans la documentation de **détection d'intrusion**. 
+
+Dans le cadre du cours d'intelligence artificielle, nous avons réalisé un projet de détection d'intrusion.
+
+Le projet vise à mettre en place une solution de détection d'attaques réseau en utilisant Elasticsearch comme base de données pour indexer et récupérer les flux de données. La classification est effectuée par application, avec une emphase particulière sur les protocoles HTTPWeb et SSH. Le prétraitement des flux, la vectorisation et la modélisation du comportement réseau sont essentiels pour optimiser la performance du modèle. Le processus implique l'entraînement du modèle, la détermination de paramètres optimaux via la cross-validation, et l'utilisation de seuils adaptatifs pour la classification. L'évaluation approfondie des performances, notamment avec des métriques telles que la courbe ROC et l'AUC, offre une compréhension approfondie de la capacité du modèle à détecter les attaques et à maintenir une précision acceptable dans des conditions de contraintes matérielles.
+
+Cette documentation vise à fournir une référence complète pour comprendre et utiliser ce projet.
+
+.. note::
+
+   N'hésitez pas à explorer les différentes sections de la barre latérale pour accéder rapidement à l'information souhaitée.
+
+Auteurs
+=======
+
+Les auteurs de ce projet sont :
+
+- COUTAND Bastien
+- MARCHAND Robin
+
+Packages
+=======
+
+.. toctree::
+   :maxdepth: 1
+   :glob:
+
+   _sources/utils
+   _sources/web-api

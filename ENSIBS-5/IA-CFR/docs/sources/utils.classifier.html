@@ -1,0 +1,555 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>utils.classifier package &mdash; IA - Flow Classification V1 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../static/pygments.css?v=92fd9be5" />
+      <link rel="stylesheet" type="text/css" href="../static/css/theme.css?v=19f00094" />
+
+  
+  <!--[if lt IE 9]>
+    <script src="../static/js/html5shiv.min.js"></script>
+    <![endif]-->
+  
+        <script src="../static/jquery.js?v=5d32c60e"></script>
+        <script src="../static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="../static/documentation_options.js?v=7351be05"></script>
+        <script src="../static/doctools.js?v=888ff710"></script>
+        <script src="../static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="utils.config package" href="utils.config.html" />
+    <link rel="prev" title="utils package" href="utils.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            IA - Flow Classification
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="utils.html">utils package</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="utils.html#subpackages">Subpackages</a><ul class="current">
+<li class="toctree-l3 current"><a class="current reference internal" href="#">utils.classifier package</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#module-utils.classifier.Classification">Classification class</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#module-utils.classifier.vectorization_functions">vectorization_functions module</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="utils.config.html">utils.config package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="utils.modeling.html">utils.modeling package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="utils.tools.html">utils.tools package</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="web-api.html">web-api package</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">IA - Flow Classification</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="utils.html">utils package</a></li>
+      <li class="breadcrumb-item active">utils.classifier package</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/utils.classifier.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="utils-classifier-package">
+<h1>utils.classifier package<a class="headerlink" href="#utils-classifier-package" title="Link to this heading"></a></h1>
+<section id="module-utils.classifier.Classification">
+<span id="classification-class"></span><h2>Classification class<a class="headerlink" href="#module-utils.classifier.Classification" title="Link to this heading"></a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="utils.classifier.Classification.Classification">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">utils.classifier.Classification.</span></span><span class="sig-name descname"><span class="pre">Classification</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">es:</span> <span class="pre">&lt;module</span> <span class="pre">'utils.config.ElasticConfig'</span> <span class="pre">from</span> <span class="pre">'/home/couttcoutt/Documents/S9/ia/projet/AI/src/utils/config/ElasticConfig.py'&gt;</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">accessing</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#utils.classifier.Classification.Classification" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>The class <cite>Classification</cite> creates the initial subset for each application, train the KNN and NB models, and
+evaluates the performance of the models on the test_data set. It can also display the ROC curve and display the
+confusion matrix and the performance metrics.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>es</strong> – the Elasticsearch configuration</p></li>
+<li><p><strong>accessing</strong> – the accessing class</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="utils.classifier.Classification.Classification.NB_model">
+<span class="sig-name descname"><span class="pre">NB_model</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">X_train</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">X_test</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y_train</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y_test</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">app_name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">version_number</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#utils.classifier.Classification.Classification.NB_model" title="Link to this definition"></a></dt>
+<dd><p>The function <cite>NB_model</cite> runs the test_data with the NB classifier. It performs a cross validation
+on the training set, applies the optimal threshold to the test_data set, and evaluates the performance
+of the classifier on the test_data set. It also displays the ROC curve.
+- The optimal threshold is the threshold that maximizes the difference between the true positive rate and the
+false positive rate.
+:param X_train: the training set
+:param X_test: the test_data set
+:param y_train: the training set labels
+:param y_test: the test_data set labels
+:param app_name: the application name
+:param version_number: the version number
+:return: various metrics used to draw the ROC curve
+:rtype: NDArray, Float, Float, Float, String</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="utils.classifier.Classification.Classification.create_initial_subset">
+<span class="sig-name descname"><span class="pre">create_initial_subset</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">application_names</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">list</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#utils.classifier.Classification.Classification.create_initial_subset" title="Link to this definition"></a></dt>
+<dd><p>The function <cite>create_initial_subset</cite> creates the initial subset for each application. The initial subset
+contains the same number of attacks and the same number of normal flows. The initial subset is created
+randomly.
+:param application_names: the list of application names
+:return: a dictionary of initial subsets for each application
+:rtype: dict of lists</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="utils.classifier.Classification.Classification.create_subset">
+<span class="sig-name descname"><span class="pre">create_subset</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">flows</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">dict</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">rate_for_attacks</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">0.2</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#utils.classifier.Classification.Classification.create_subset" title="Link to this definition"></a></dt>
+<dd><p>The function <cite>create_subset</cite> creates a subset for one application. The subset contains the same number of attacks
+and the same number of normal flows. The subset is created randomly. The subset is created by combining the
+training and test_data sets.
+:param flows: a dictionary of flows for one application
+:param rate_for_attacks: the rate of attacks in the test_data sets. Default is 0.2
+:return: a dictionary of ‘nb_subsets’ test_data sets for each application
+:rtype: dict of lists</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="utils.classifier.Classification.Classification.create_subset_second_challenge">
+<span class="sig-name descname"><span class="pre">create_subset_second_challenge</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">flows</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">dict</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">rate_for_attacks</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">0.2</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#utils.classifier.Classification.Classification.create_subset_second_challenge" title="Link to this definition"></a></dt>
+<dd><p>The function <cite>create_subset_second_challenge</cite> creates a subset for one application. The subset contains the same number of attacks
+and the same number of normal flows. The subset is created randomly. The subset is created by combining the
+training and test_data sets.
+:param flows: a dictionary of flows for one application
+:param rate_for_attacks: the rate of attacks in the test_data sets. Default is 0.2
+:return: a dictionary of ‘nb_subsets’ test_data sets for each application
+:rtype: dict of lists</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="utils.classifier.Classification.Classification.cross_validation">
+<span class="sig-name descname"><span class="pre">cross_validation</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">X_train</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y_train</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">classifier</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#utils.classifier.Classification.Classification.cross_validation" title="Link to this definition"></a></dt>
+<dd><p>The function <cite>cross_validation</cite> performs a cross validation on the training set. It returns the ROC curve
+and the area under the curve.
+:param X_train: the training set
+:param y_train: the training set labels
+:param classifier: the classifier function
+:return: the base false positive rate, the mean true positive rate, the area under the curve, and the optimal
+threshold
+:rtype: NDArray, Float, Float, Float</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="utils.classifier.Classification.Classification.display_roc_curve">
+<span class="sig-name descname"><span class="pre">display_roc_curve</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">curve_dict</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">list</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">app_name</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#utils.classifier.Classification.Classification.display_roc_curve" title="Link to this definition"></a></dt>
+<dd><p>The function <cite>display_roc_curve</cite> displays the ROC curve for the classifier.
+:param curve_dict: a list containing the ROC curve and the area under the curve for each 
+classifier. It contains the following keys: ‘base_fpr’, ‘mean_tprs’, ‘mean_auc’, ‘classifier_name’.
+:param app_name: the application name</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="utils.classifier.Classification.Classification.is_knn_model">
+<span class="sig-name descname"><span class="pre">is_knn_model</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">is_knn</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#utils.classifier.Classification.Classification.is_knn_model" title="Link to this definition"></a></dt>
+<dd><p>The function <cite>is_knn_model</cite> sets the flag ‘is_knn’ to True if the test_data must be run with the KNN classifier.
+:param is_knn: True if the test_data must be run with the KNN classifier, False otherwise</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="utils.classifier.Classification.Classification.is_nb_model">
+<span class="sig-name descname"><span class="pre">is_nb_model</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">is_nb</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#utils.classifier.Classification.Classification.is_nb_model" title="Link to this definition"></a></dt>
+<dd><p>The function <cite>is_nb_model</cite> sets the flag ‘is_nb’ to True if the test_data must be run with the NB classifier.
+:param is_nb: True if the test_data must be run with the NB classifier, False otherwise</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="utils.classifier.Classification.Classification.knn_model">
+<span class="sig-name descname"><span class="pre">knn_model</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">X_train</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">X_test</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y_train</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y_test</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">app_name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">version_number</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#utils.classifier.Classification.Classification.knn_model" title="Link to this definition"></a></dt>
+<dd><p>The function <cite>knn_model</cite> runs the test_data with the KNN classifier. It performs a cross validation
+on the training set, applies the optimal threshold to the test_data set, and evaluates the performance
+of the classifier on the test_data set. It also displays the ROC curve.
+- The optimal threshold is the threshold that maximizes the difference between the true positive rate and the
+false positive rate.
+:param X_train: the training set
+:param X_test: the test_data set
+:param y_train: the training set labels
+:param y_test: the test_data set labels
+:param app_name: the application name
+:param version_number: the version number
+:return: various metrics used to draw the ROC curve
+:rtype: NDArray, Float, Float, Float, String</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="utils.classifier.Classification.Classification.knn_model_test_second_challenge">
+<span class="sig-name descname"><span class="pre">knn_model_test_second_challenge</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">classifier</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">test_subsets</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">version_number</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">part_number</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#utils.classifier.Classification.Classification.knn_model_test_second_challenge" title="Link to this definition"></a></dt>
+<dd><p>The function <cite>knn_model_test_second_challenge</cite> tests the KNN model with the test data coming from second
+challenge data.
+:param classifier: the KNN model
+:param test_subsets: the test data coming from second challenge data
+:param version_number: the version number
+:param part_number: the part number of the file
+:return: the predictions and the probabilities
+:rtype: list, list</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="utils.classifier.Classification.Classification.knn_model_train_second_challenge">
+<span class="sig-name descname"><span class="pre">knn_model_train_second_challenge</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">X_train</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y_train</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">classifier_knn</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">save_path</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#utils.classifier.Classification.Classification.knn_model_train_second_challenge" title="Link to this definition"></a></dt>
+<dd><p>The function <cite>knn_model_train_second_challenge</cite> trains the KNN model if it doesn’t exist with the second challenge data.
+It saves the model to a file with pickle. If the model already exists, it loads the model from the file.
+:param X_train: the training set
+:param y_train: the training set labels
+:param classifier_knn: the KNN model
+:return: the KNN model and the optimal threshold
+:rtype: KNeighborsClassifier</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="utils.classifier.Classification.Classification.performance_evaluation_on_second_challenge">
+<span class="sig-name descname"><span class="pre">performance_evaluation_on_second_challenge</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">y_pred_test_proba</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">probs</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">part_number</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">classifier_name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">version_number</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#utils.classifier.Classification.Classification.performance_evaluation_on_second_challenge" title="Link to this definition"></a></dt>
+<dd><p>The function <cite>performance_evaluation_on_second_challenge</cite> writes the predictions and the probabilities to
+a JSON file.
+:param y_pred_test_proba: the test_data set predictions
+:param preds: the test_data set predictions with the optimal threshold
+:param classifier_name: the classifier name
+:param app_name: the application name
+:param version_number: the version number
+:param part_number: the part number</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="utils.classifier.Classification.Classification.performance_evaluation_on_test_set">
+<span class="sig-name descname"><span class="pre">performance_evaluation_on_test_set</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">y_test</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y_pred_test</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#utils.classifier.Classification.Classification.performance_evaluation_on_test_set" title="Link to this definition"></a></dt>
+<dd><p>The function <cite>performance_evaluation_on_test_set</cite> evaluates the performance of the classifier on the test_data set.
+It displays the confusion matrix and the performance metrics.
+:param y_test: the test_data set labels
+:param y_pred_test: the test_data set predictions</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="utils.classifier.Classification.Classification.performance_evaluation_on_test_set_first_defi">
+<span class="sig-name descname"><span class="pre">performance_evaluation_on_test_set_first_defi</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">y_pred_test_proba</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">probs</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">classifer_name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">app_name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">version_number</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#utils.classifier.Classification.Classification.performance_evaluation_on_test_set_first_defi" title="Link to this definition"></a></dt>
+<dd><p>The function <cite>performance_evaluation_on_test_set_first_defi</cite> writes the predictions and the probabilities
+to a JSON file.
+:param y_pred_test_proba: the test_data set predictions
+:param preds: the test_data set predictions with the optimal threshold
+:param classifer_name: the classifier name
+:param app_name: the application name
+:param version_number: the version number</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="utils.classifier.Classification.Classification.run">
+<span class="sig-name descname"><span class="pre">run</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">app_names</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">list</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">test_subsets</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#utils.classifier.Classification.Classification.run" title="Link to this definition"></a></dt>
+<dd><p>The function <cite>run</cite> runs the general process for the first challenge data nad classical_data. It creates the
+initial subset for each application, trains the KNN and NB models, and evaluates the performance of the models
+on the test_data set. It also displays the ROC curve.
+:param app_names: the list of application names
+:param test_subsets: the test_subsets already created and vectorized</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="utils.classifier.Classification.Classification.run_second_challenge">
+<span class="sig-name descname"><span class="pre">run_second_challenge</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#utils.classifier.Classification.Classification.run_second_challenge" title="Link to this definition"></a></dt>
+<dd><p>The function <cite>run_second_challenge</cite> runs the general process for the second challenge. It creates the initial
+subset for all the data and trains the KNN model. It then tests the KNN model with the test data.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="utils.classifier.Classification.Classification.set_draw_roc_curve">
+<span class="sig-name descname"><span class="pre">set_draw_roc_curve</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">draw_roc_curve</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#utils.classifier.Classification.Classification.set_draw_roc_curve" title="Link to this definition"></a></dt>
+<dd><p>The function <cite>set_draw_roc_curve</cite> sets the flag ‘is_draw_roc_curve’ to True if the ROC curve must be displayed.
+:param draw_roc_curve: True if the ROC curve must be displayed, False otherwise</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="utils.classifier.Classification.Classification.set_is_second_challenge">
+<span class="sig-name descname"><span class="pre">set_is_second_challenge</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">is_second_challenge</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#utils.classifier.Classification.Classification.set_is_second_challenge" title="Link to this definition"></a></dt>
+<dd><p>The function <cite>set_is_second_challenge</cite> sets the flag ‘is_second_challenge’ to True if the test_data must be run with the
+second definition of the attack.
+:param is_second_challenge: True if the test_data must be run with the second definition of the attack, False otherwise</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="utils.classifier.Classification.Classification.set_test_first_challenge">
+<span class="sig-name descname"><span class="pre">set_test_first_challenge</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">is_test_first_challenge</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#utils.classifier.Classification.Classification.set_test_first_challenge" title="Link to this definition"></a></dt>
+<dd><p>The function <cite>set_test_first_challenge</cite> sets the flag ‘is_first_challenge’ to True if the test_data
+must be run with the test_data coming from first challenge data.
+:param is_test_first_challenge: True if the test_data must be run with the test_data coming from first challenge data,</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="utils.classifier.Classification.Classification.shuffle_list">
+<span class="sig-name descname"><span class="pre">shuffle_list</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">list1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">list2</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#utils.classifier.Classification.Classification.shuffle_list" title="Link to this definition"></a></dt>
+<dd><p>The function <cite>shuffle_list</cite> shuffles two lists in the same order. It returns the two shuffled lists.
+:param list1: the first list
+:param list2: the second list
+:return: the two shuffled lists
+:rtype: tuple of lists</p>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="module-utils.classifier.vectorization_functions">
+<span id="vectorization-functions-module"></span><h2>vectorization_functions module<a class="headerlink" href="#module-utils.classifier.vectorization_functions" title="Link to this heading"></a></h2>
+<dl class="py function">
+<dt class="sig sig-object py" id="utils.classifier.vectorization_functions.run_vectorization">
+<span class="sig-prename descclassname"><span class="pre">utils.classifier.vectorization_functions.</span></span><span class="sig-name descname"><span class="pre">run_vectorization</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">flows</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">list</span><span class="p"><span class="pre">[</span></span><span class="pre">dict</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">is_second_challenge</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#utils.classifier.vectorization_functions.run_vectorization" title="Link to this definition"></a></dt>
+<dd><p>The function <cite>run_vectorization</cite> runs the vectorization process.
+:param flows: a list of flows
+:return: a list of vectors
+:rtype: list</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="utils.classifier.vectorization_functions.vectorize_flags_second_challenge">
+<span class="sig-prename descclassname"><span class="pre">utils.classifier.vectorization_functions.</span></span><span class="sig-name descname"><span class="pre">vectorize_flags_second_challenge</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">flags</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#utils.classifier.vectorization_functions.vectorize_flags_second_challenge" title="Link to this definition"></a></dt>
+<dd><p>The function <cite>vectorize_flags_second_challenge</cite> vectorizes a flag.
+:param flags: a flag
+:return: a vectorized flag
+:rtype: list</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">vectorize_flags_second_challenge</span><span class="p">(</span><span class="s2">&quot;A.S.R&quot;</span><span class="p">))</span>
+<span class="go">[1, 1, 1, 0, 0]</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="utils.classifier.vectorization_functions.vectorize_ip_second_challenge">
+<span class="sig-prename descclassname"><span class="pre">utils.classifier.vectorization_functions.</span></span><span class="sig-name descname"><span class="pre">vectorize_ip_second_challenge</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ip</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#utils.classifier.vectorization_functions.vectorize_ip_second_challenge" title="Link to this definition"></a></dt>
+<dd><p>The function <cite>vectorize_ip_second_challenge</cite> vectorizes an IP address.
+:param ip: an IP address
+:return: a vectorized IP address
+:rtype: int</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">vectorize_ip_second_challenge</span><span class="p">(</span><span class="s2">&quot;127.0.0.1&quot;</span><span class="p">))</span>
+<span class="go">127001</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">vectorize_ip_second_challenge</span><span class="p">(</span><span class="s2">&quot;EXT_SERVER&quot;</span><span class="p">))</span>
+<span class="go">69888495836982866982</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">vectorize_ip_second_challenge</span><span class="p">(</span><span class="s2">&quot;AB_DERF&quot;</span><span class="p">))</span>
+<span class="go">65669568698270</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="utils.classifier.vectorization_functions.vectorize_timestamp">
+<span class="sig-prename descclassname"><span class="pre">utils.classifier.vectorization_functions.</span></span><span class="sig-name descname"><span class="pre">vectorize_timestamp</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">timestamp</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#utils.classifier.vectorization_functions.vectorize_timestamp" title="Link to this definition"></a></dt>
+<dd><p>The function <cite>vectorize_timestamp</cite> vectorizes a timestamp.
+:param timestamp: a timestamp
+:return: a vectorized timestamp
+:rtype: list</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">vectorize_timestamp</span><span class="p">(</span><span class="mi">1276544388</span><span class="p">))</span>
+<span class="go">[20100614, 235948]</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="utils.classifier.vectorization_functions.vectorized">
+<span class="sig-prename descclassname"><span class="pre">utils.classifier.vectorization_functions.</span></span><span class="sig-name descname"><span class="pre">vectorized</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">flow</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">dict</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#utils.classifier.vectorization_functions.vectorized" title="Link to this definition"></a></dt>
+<dd><p>The function <cite>vectorize</cite> vectorizes a flow. The vectorization process is based on the following features:
+- totalSourceBytes                  - totalDestinationBytes
+- totalDestinationPackets           - totalSourcePackets
+- sourcePayloadAsBase64             - destinationPayloadAsBase64
+- direction                         - sourceTCPFlagsDescription
+- destinationTCPFlagsDescription    - protocolName
+- source                            - destination
+- sourcePort                        - destinationPort
+:param flow: a flow
+:return: a vectorized flow
+:rtype: list</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">vectorized</span><span class="p">(</span><span class="n">flow</span><span class="o">=</span><span class="p">{</span>
+<span class="gp">... </span>    <span class="s2">&quot;totalSourceBytes&quot;</span><span class="p">:</span> <span class="s2">&quot;384&quot;</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="s2">&quot;totalDestinationBytes&quot;</span><span class="p">:</span> <span class="s2">&quot;0&quot;</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="s2">&quot;totalDestinationPackets&quot;</span><span class="p">:</span> <span class="s2">&quot;0&quot;</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="s2">&quot;totalSourcePackets&quot;</span><span class="p">:</span> <span class="s2">&quot;6&quot;</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="s2">&quot;sourcePayloadAsBase64&quot;</span><span class="p">:</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="s2">&quot;destinationPayloadAsBase64&quot;</span><span class="p">:</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="s2">&quot;destinationPayloadAsUTF&quot;</span><span class="p">:</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="s2">&quot;direction&quot;</span><span class="p">:</span> <span class="s2">&quot;L2R&quot;</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="s2">&quot;sourceTCPFlagsDescription&quot;</span><span class="p">:</span> <span class="s2">&quot;F,A&quot;</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="s2">&quot;destinationTCPFlagsDescription&quot;</span><span class="p">:</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="s2">&quot;source&quot;</span><span class="p">:</span> <span class="s2">&quot;</span>
+<span class="gp">... </span>    <span class="s2">&quot;protocolName&quot;</span><span class="p">:</span> <span class="s2">&quot;tcp_ip&quot;</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="s2">&quot;sourcePort&quot;</span><span class="p">:</span> <span class="s2">&quot;4435&quot;</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="s2">&quot;destination&quot;</span><span class="p">:</span> <span class="s2">&quot;206.217.198.186&quot;</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="s2">&quot;destinationPort&quot;</span><span class="p">:</span> <span class="s2">&quot;80&quot;</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="s2">&quot;startDateTime&quot;</span><span class="p">:</span> <span class="s2">&quot;2010-06-13T23:58:23&quot;</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="s2">&quot;stopDateTime&quot;</span><span class="p">:</span> <span class="s2">&quot;2010-06-14T00:01:24&quot;</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="s2">&quot;Tag&quot;</span><span class="p">:</span> <span class="s2">&quot;Normal&quot;</span>
+<span class="go">}))</span>
+<span class="go">[384, 0, 0, 6, 4435, 0, 0, 80, 1921682111, 206217198186, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 20100613, 235823, 20100614, 124]</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="utils.classifier.vectorization_functions.vectorized_bytes">
+<span class="sig-prename descclassname"><span class="pre">utils.classifier.vectorization_functions.</span></span><span class="sig-name descname"><span class="pre">vectorized_bytes</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">bytes</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#utils.classifier.vectorization_functions.vectorized_bytes" title="Link to this definition"></a></dt>
+<dd><p>The function <cite>vectorized_bytes</cite> vectorizes a byte.
+:param bytes: a byte
+:return: a vectorized byte
+:rtype: int</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">vectorized_bytes</span><span class="p">(</span><span class="s2">&quot;1.2M&quot;</span><span class="p">))</span>
+<span class="go">1200000</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">vectorized_bytes</span><span class="p">(</span><span class="s2">&quot;1.2K&quot;</span><span class="p">))</span>
+<span class="go">1200</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">vectorized_bytes</span><span class="p">(</span><span class="s2">&quot;1&quot;</span><span class="p">))</span>
+<span class="go">1</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="utils.classifier.vectorization_functions.vectorized_ip">
+<span class="sig-prename descclassname"><span class="pre">utils.classifier.vectorization_functions.</span></span><span class="sig-name descname"><span class="pre">vectorized_ip</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ip</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#utils.classifier.vectorization_functions.vectorized_ip" title="Link to this definition"></a></dt>
+<dd><p>The function <cite>vectorize_ip</cite> vectorizes an IP address.
+:param ip: an IP address
+:return: a vectorized IP address
+:rtype: int</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="utils.classifier.vectorization_functions.vectorized_payload">
+<span class="sig-prename descclassname"><span class="pre">utils.classifier.vectorization_functions.</span></span><span class="sig-name descname"><span class="pre">vectorized_payload</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">payload</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#utils.classifier.vectorization_functions.vectorized_payload" title="Link to this definition"></a></dt>
+<dd><p>The function <cite>vectorize_payload</cite> vectorized a payload. The vectorization process is based on the sum of the ASCII
+value of each character of the payload. The payload is split into 4 subsets. If the payload is less than 8
+characters, the payload is split into 1 subset.
+:param payload: a payload
+:return: a vectorized payload of size 1x4
+:rtype: list</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">vectorized_payload</span><span class="p">(</span><span class="s2">&quot;Hello&quot;</span><span class="p">))</span>
+<span class="go">[448, 0, 0, 0]</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="utils.classifier.vectorization_functions.vectorized_second_challenge">
+<span class="sig-prename descclassname"><span class="pre">utils.classifier.vectorization_functions.</span></span><span class="sig-name descname"><span class="pre">vectorized_second_challenge</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">flow</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">dict</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#utils.classifier.vectorization_functions.vectorized_second_challenge" title="Link to this definition"></a></dt>
+<dd><p>The function <cite>vectorized_second_challenge</cite> vectorizes a flow. The vectorization process is based on the following features:
+- Timestamp                  - Duration
+- Protocol                   - Src_IP_Add
+- Src_Pt                     - Dst_IP_Add
+- Dst_Pt                     - Packets
+- Bytes                      - Flags
+- Tos
+:param flow: a flow
+:return: a vectorized flow
+:rtype: list</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">vectorized_second_challenge</span><span class="p">(</span><span class="n">flow</span><span class="o">=</span><span class="p">{</span>
+<span class="gp">... </span>    <span class="s2">&quot;Timestamp&quot;</span><span class="p">:</span> <span class="s2">&quot;1276544388&quot;</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="s2">&quot;Duration&quot;</span><span class="p">:</span> <span class="s2">&quot;0.000000&quot;</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="s2">&quot;Protocol&quot;</span><span class="p">:</span> <span class="s2">&quot;TCP&quot;</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="s2">&quot;Src_IP_Add&quot;</span><span class="p">:</span> <span class="s2">&quot;192.168.2.111&quot;</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="s2">&quot;Src_Pt&quot;</span><span class="p">:</span> <span class="s2">&quot;4435&quot;</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="s2">&quot;Dst_IP_Add&quot;</span><span class="p">:</span> <span class="s2">&quot;206.217.198.186&quot;</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="s2">&quot;Dst_Pt&quot;</span><span class="p">:</span> <span class="s2">&quot;80&quot;</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="s2">&quot;Packets&quot;</span><span class="p">:</span> <span class="s2">&quot;6&quot;</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="s2">&quot;Bytes&quot;</span><span class="p">:</span> <span class="s2">&quot;384&quot;</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="s2">&quot;Flows&quot;</span><span class="p">:</span> <span class="s2">&quot;1&quot;</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="s2">&quot;Flags&quot;</span><span class="p">:</span> <span class="s2">&quot;A.S.R&quot;</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="s2">&quot;Tos&quot;</span><span class="p">:</span> <span class="s2">&quot;0&quot;</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="s2">&quot;class&quot;</span><span class="p">:</span> <span class="s2">&quot;Normal&quot;</span>
+<span class="go">}))</span>
+<span class="go">[0, 4435.0, 80.0, 6, 384, 0, 1921682111, 206217198186, 1, 0, 0, 0, 1, 0, 1, 1, 0, 20100614, 213948]</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="utils.classifier.vectorization_functions.vectorized_tcp_flag">
+<span class="sig-prename descclassname"><span class="pre">utils.classifier.vectorization_functions.</span></span><span class="sig-name descname"><span class="pre">vectorized_tcp_flag</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">tcp_flag</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#utils.classifier.vectorization_functions.vectorized_tcp_flag" title="Link to this definition"></a></dt>
+<dd><p>The function <cite>vectorize_tcp_flag</cite> vectorizes a TCP flag.
+:param tcp_flag: a TCP flag
+:return: a vectorized TCP flag
+:rtype: list</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">vectorized_tcp_flag</span><span class="p">(</span><span class="s2">&quot;ASR&quot;</span><span class="p">))</span>
+<span class="go">[0, 1, 1, 1, 0, 0, 0, 0, 0]</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="utils.classifier.vectorization_functions.vectorized_time">
+<span class="sig-prename descclassname"><span class="pre">utils.classifier.vectorization_functions.</span></span><span class="sig-name descname"><span class="pre">vectorized_time</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">datetime</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#utils.classifier.vectorization_functions.vectorized_time" title="Link to this definition"></a></dt>
+<dd><p>The function <cite>vectorize_time</cite> vectorizes a time.
+:param datetime: a time
+:return: a vectorized time
+:rtype: list</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">vectorized_time</span><span class="p">(</span><span class="s2">&quot;2010-06-14T23:59:48&quot;</span><span class="p">))</span>
+<span class="go">[20100614, 235948]</span>
+</pre></div>
+</div>
+</dd></dl>
+
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="utils.html" class="btn btn-neutral float-left" title="utils package" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="utils.config.html" class="btn btn-neutral float-right" title="utils.config package" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2023, COUTAND MARCHAND.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

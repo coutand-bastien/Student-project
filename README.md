@@ -53,3 +53,9 @@
 
 * ## [MonkEy-Commerce](./ENSIBS-4/monkey-commerce/README.md) [JAVA(Jakarta EE) - MAVEN - DOCKER - SQL - XHTML]
 > Site de ecommerce utilisant jakartaEE, docker, mysql
+
+<br>
+
+# ENSIBS - 5ème année :
+* ## [IA - Classification de flux réseau](./ENSIBS-5/IA-CFR/README.md) [python - docker - elastic search - IA]
+> Ce projet vise à résoudre deux défis liés à la classification de flux en matière de sécurité réseau. Les objectifs incluent la création de classificateurs pour des protocoles d'application spécifiques, tels que HTTPWeb et SSH, ainsi qu'un classificateur général pour diverses applications. Les fichiers XML seront utilisés pour l'entraînement et les tests des classificateurs.
