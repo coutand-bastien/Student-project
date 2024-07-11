@@ -2,19 +2,19 @@
 
 ## Summary
 
-- [Configure the project](#Configure the project)
-    - [First step : Install the project](#First step Install the project)
-    - [Second step : Install elastic search with docker](#Second step Install elastic search with docker)
-    - [Third step : Add the data in the project](#Third step Add the data in the project)
-- [Run the project](#Run the project)
-- [Example of use in the terminal](#Example of use in the terminal)
-  - [Classification with the classic data](#Classification with the classic data)
-  - [Use the api function](#Use the api function)
-  - [Classification with the first challenge data](#Classification with the first challenge data)
-  - [Classification with the second challenge data](#Classification with the second challenge data)
-  - [run the API using the web server](#run the API using the web server)
-- [Verify the json data](#Verify the json data)
-- [Code documentation](#Code documentation)
+- [Configure the project](#configure-the-project)
+    - [First step : Install the project](#first-step--Install-the-project)
+    - [Second step : Install elastic search with docker](#second-step--Install-elastic-search-with-docker)
+    - [Third step : Add the data in the project](#third-step--Add-the-data-in-the-project)
+- [Run the project](#run-the-project)
+- [Example of use in the terminal](#example-of-use-in-the-terminal)
+  - [Classification with the classic data](#classification-with-the-classic-data)
+  - [Use the api function](#use-the-api-function)
+  - [Classification with the first challenge data](#classification-with-the-first-challenge-data)
+  - [Classification with the second challenge data](#classification-with-the-second-challenge-data)
+  - [run the API using the web server](#run-the-API-using-the-web-server)
+- [Verify the json data](#verify-the-json-data)
+- [Code documentation](#code-documentation)
 
 ## Configure the project
 
