@@ -57,7 +57,7 @@ The ISCX data is available as a bunch of XML files :
 - TestbedWedJun16-2Flows.xml
 - TestbedThuJun17-2Flows.xml
 
-There are various tests available for testing the project: like [first challenge](FIRST_CHALLENGE) test ssh and httpWeb available in the [./src/data/test_data.zip](../src/data/test_data.zip) or [second challenge](SECOND_CHALLENGE) data available in the [./src/data/second_challenge_data.zip](./src/data/second_challenge_data.zip)
+There are various tests available for testing the project: like [first challenge](FIRST_CHALLENGE.md) test ssh and httpWeb available in the [./src/data/test_data.zip](../src/data/test_data.zip) or [second challenge](SECOND_CHALLENGE.md) data available in the [./src/data/second_challenge_data.zip](./src/data/second_challenge_data.zip)
 
 ## Run the project
 
